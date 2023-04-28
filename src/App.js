@@ -1,25 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-import {FormWrapper} from "./components/forms/FormWrapper";
+import {FormWrapperComponent} from "./components/forms/FormWrapperComponent";
+import {ExtensionPropertiesComponent} from "./components/accordions/ExtensionPropertiesComponent";
+import {ModulesListComponent} from "./components/accordions/ModulesListComponent";
+import {AuthorsListComponent} from "./components/accordions/AuthorsListComponent";
+import {PluginsListComponent} from "./components/accordions/PluginsListComponent";
 
 function App() {
     return (
         <div className="App">
-            <FormWrapper />
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+            <div className="column" id="left-column">
+                <div className="row">
+                    <AuthorsListComponent />
+                    <ExtensionPropertiesComponent />
+                    <ModulesListComponent />
+                    <PluginsListComponent />
+                    <FormWrapperComponent />
+                </div>
+            </div>
+            <div className="column" id="right-column">
+                <div className="row">
+                    <div>
+                        Hier wird der Inhalt der rechten Spalte stehen
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
