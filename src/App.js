@@ -10,6 +10,8 @@ import {SingleAuthorComponent} from "./components/SingleComponents/SingleAuthorC
 
 function App() {
     const [authors, setAuthors] = useState([]);
+    const [plugins, setPlugins] = useState([]);
+    const [modules, setModules] = useState([]);
 
     const defaultAuthor = {
         name: '',
@@ -17,9 +19,39 @@ function App() {
         email: '',
         company: '',
     }
+
+    const defaultModule = {
+        name: '',
+        key: '',
+        description: '',
+        tabLabel: '',
+        mainModule: '',
+        controllerActionsCachable: ''
+    }
+
+    const defaultPlugin = {
+        name: '',
+        key: '',
+        description: '',
+        controllerActionsCachable: '',
+        controllerActionsNonCachable: '',
+    }
+
     const addNewAuthorHandler = () => {
         setAuthors((prevAuthors) => {
             return [...prevAuthors, defaultAuthor];
+        });
+    }
+
+    const addNewModuleHandler = () => {
+        setModules((prevModules) => {
+            return [...prevModules, defaultModule];
+        });
+    }
+
+    const addNewPluginHandler = () => {
+        setPlugins((prevPlugins) => {
+            return [...prevPlugins, defaultPlugin];
         });
     }
 
@@ -35,6 +67,37 @@ function App() {
             return updatedAuthors;
         });
         console.log("Autor aktualisiert", authorIndex, authorName, authorRole, authorEmail, authorCompany);
+    }
+
+    const updateModuleHandler = (moduleIndex, moduleName, moduleKey, moduleDescription, moduleTabLabel, moduleMainModule, moduleControllerActionsCachable) => {
+        setModules((prevModules) => {
+            const updatedModule = [...prevModules];
+            updatedModule[moduleIndex] = {
+                name: moduleName,
+                key: moduleKey,
+                description: moduleDescription,
+                tabLabel: moduleTabLabel,
+                mainModule: moduleMainModule,
+                controllerActionsCachable: moduleControllerActionsCachable,
+            };
+            return updatedModule;
+        });
+        console.log("Modul aktualisiert", moduleIndex, moduleName, moduleKey, moduleDescription, moduleTabLabel, moduleMainModule, moduleControllerActionsCachable);
+    }
+
+    const updatePluginHandler = (pluginIndex, pluginName, pluginKey, pluginDescription, pluginControllerActionsCachable, pluginControllerActionsNonCachable) => {
+        setPlugins((prevPlugins) => {
+            const updatedPlugin = [...prevPlugins];
+            updatedPlugin[pluginIndex] = {
+                name: pluginName,
+                key: pluginKey,
+                description: pluginDescription,
+                controllerActionsCachable: pluginControllerActionsCachable,
+                controllerActionsNonCachable: pluginControllerActionsNonCachable,
+            };
+            return updatedPlugin;
+        });
+        console.log("Plugin aktualisiert", pluginIndex, pluginName, pluginKey, pluginDescription, pluginControllerActionsCachable, pluginControllerActionsNonCachable);
     }
 
     return (
@@ -79,23 +142,6 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <div className="accordion" id="accordionModules">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionModules">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionModules" aria-expanded="true" aria-controls="collapseAccordionModules">
-                                    Modules
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionModules" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionModules"
-                                 data-bs-parent="#accordionModules">
-                                <div className="accordion-body">
-                                    <ModulesListComponent/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="accordion" id="accordionPlugins">
                         <div className="accordion-item">
                             <h2 className="accordion-header" id="headingAccordionPlugins">
@@ -108,19 +154,52 @@ function App() {
                                  aria-labelledby="headingAccordionPlugins"
                                  data-bs-parent="#accordionPlugins">
                                 <div className="accordion-body">
-                                    <PluginsListComponent/>
+                                    <PluginsListComponent
+                                        plugins={plugins}
+                                        addPluginsHandler={addNewPluginHandler}
+                                        updatePluginHandler={updatePluginHandler}
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div className="accordion" id="accordionModules">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingAccordionModules">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseAccordionModules" aria-expanded="true" aria-controls="collapseAccordionModules">
+                                    Modules
+                                </button>
+                            </h2>
+                            <div id="collapseAccordionModules" className="accordion-collapse collapse"
+                                 aria-labelledby="headingAccordionModules"
+                                 data-bs-parent="#accordionModules">
+                                <div className="accordion-body">
+                                    <ModulesListComponent
+                                        modules={modules}
+                                        addModulesHandler={addNewModuleHandler}
+                                        updateModuleHandler={updateModuleHandler}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-8 text-start" id="right-column">
+
                     <pre>
                         {JSON.stringify(authors, null, 2)}
                     </pre>
-                </div>
-                <div className="col-8 text-start" id="right-column">
-                    <div>
-                        Hier wird der Inhalt der rechten Spalte stehen
-                    </div>
+                    <hr />
+                    <pre>
+                        {JSON.stringify(plugins, null, 2)}
+                    </pre>
+                    <hr />
+                    <pre>
+                        {JSON.stringify(modules, null, 2)}
+                    </pre>
+                    <hr />
                 </div>
             </div>
         </div>
