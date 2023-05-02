@@ -22,7 +22,7 @@ export const PluginsListComponent = (props) => {
                 }
             </ul>
             <button
-                className="btn btn-success"
+                className="btn btn-success w-100"
                 onClick={props.addPluginsHandler}>
                 <FontAwesomeIcon className="me-1" icon="fa-solid fa-plus" />
                 Add new plugin

@@ -1,12 +1,9 @@
-import logo from './logo.svg';
 import './App.scss';
-import {FormWrapperComponent} from "./components/forms/FormWrapperComponent";
 import {ExtensionPropertiesComponent} from "./components/accordions/ExtensionPropertiesComponent";
 import {ModulesListComponent} from "./components/accordions/ModulesListComponent";
 import {AuthorsListComponent} from "./components/accordions/AuthorsListComponent";
 import {PluginsListComponent} from "./components/accordions/PluginsListComponent";
-import {Fragment, useState} from "react";
-import {SingleAuthorComponent} from "./components/SingleComponents/SingleAuthorComponent";
+import {useState} from "react";
 
 function App() {
     const [extensionProperties, setExtensionProperties] = useState(
@@ -157,6 +154,12 @@ function App() {
 
     return (
         <div className="App container-fluid">
+            <div className="collapse" id="collapseExample">
+                <div className="card card-body">
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed
+                    when the user activates the relevant trigger.
+                </div>
+            </div>
             <div className="row">
                 <div className="col-4 text-start" id="left-column">
                     <div className="accordion" id="accordionExtensionProperties">
@@ -280,6 +283,9 @@ function App() {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="col-8 text-start" id="right-column">
+                    React flow
                 </div>
             </div>
         </div>

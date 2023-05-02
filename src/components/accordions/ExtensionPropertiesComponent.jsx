@@ -158,7 +158,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 />
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-signature" /></span>
+                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-question" /></span>
                 <textarea
                     className="form-control"
                     aria-label="With textarea"
@@ -205,7 +205,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 />
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
                 <select
                     className="form-select"
                     aria-label="State"
@@ -266,7 +266,7 @@ export const ExtensionPropertiesComponent = (props) => {
             </div>
 
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-flag" /></span>
                 <input
                     type="text"
                     className="form-control"
@@ -281,7 +281,7 @@ export const ExtensionPropertiesComponent = (props) => {
             </div>
 
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
                 <select
                     defaultChecked={extensionTargetTYPO3Versions}
                     className="form-select" aria-label="Default select example"
@@ -300,7 +300,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 </select>
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-signature" /></span>
+                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-question" /></span>
                 <textarea
                     className="form-control"
                     aria-label="With textarea"
