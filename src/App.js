@@ -243,29 +243,43 @@ function App() {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-8 text-start" id="right-column">
 
-                    <h4>Extension Properties</h4>
-                    <pre>
-                        {JSON.stringify(extensionProperties, null, 2)}
-                    </pre>
-                    <hr />
-                    <h4>Authors</h4>
-                    <pre>
-                        {JSON.stringify(authors, null, 2)}
-                    </pre>
-                    <hr />
-                    <h4>Plugins</h4>
-                    <pre>
-                        {JSON.stringify(plugins, null, 2)}
-                    </pre>
-                    <hr />
-                    <h4>Modules</h4>
-                    <pre>
-                        {JSON.stringify(modules, null, 2)}
-                    </pre>
-                    <hr />
+                    <div className="accordion" id="accordionDebug">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="headingAccordionDebug">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseAccordionDebug" aria-expanded="true" aria-controls="collapseAccordionDebug">
+                                    Debug Output
+                                </button>
+                            </h2>
+                            <div id="collapseAccordionDebug" className="accordion-collapse collapse"
+                                 aria-labelledby="headingAccordionDebug"
+                                 data-bs-parent="#accordionDebug">
+                                <div className="accordion-body">
+                                    <h4>Extension Properties</h4>
+                                    <pre>
+                                        {JSON.stringify(extensionProperties, null, 2)}
+                                    </pre>
+                                    <hr />
+                                    <h4>Authors</h4>
+                                    <pre>
+                                        {JSON.stringify(authors, null, 2)}
+                                    </pre>
+                                    <hr />
+                                    <h4>Plugins</h4>
+                                    <pre>
+                                        {JSON.stringify(plugins, null, 2)}
+                                    </pre>
+                                    <hr />
+                                    <h4>Modules</h4>
+                                    <pre>
+                                        {JSON.stringify(modules, null, 2)}
+                                    </pre>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
