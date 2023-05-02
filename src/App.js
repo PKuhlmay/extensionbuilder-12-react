@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import {FormWrapperComponent} from "./components/forms/FormWrapperComponent";
 import {ExtensionPropertiesComponent} from "./components/accordions/ExtensionPropertiesComponent";
 import {ModulesListComponent} from "./components/accordions/ModulesListComponent";
