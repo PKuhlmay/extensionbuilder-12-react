@@ -1,49 +1,61 @@
-import {Fragment, useState} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { Fragment, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const SingleAuthorComponent = (props) => {
-
     const [authorName, setAuthorName] = useState(props.author.name);
     const [authorRole, setAuthorRole] = useState(props.author.role);
     const [authorEmail, setAuthorEmail] = useState(props.author.email);
     const [authorCompany, setAuthorCompany] = useState(props.author.company);
 
-    const updateAuthorHandler = (field, value) => {
-        switch (field) {
-            case 'name':
-                setAuthorName(value);
-                break;
-            case 'role':
-                setAuthorRole(value);
-                break;
-            case 'email':
-                setAuthorEmail(value);
-                break;
-            case 'company':
-                setAuthorCompany(value);
-                break;
-        }
+    const updateFunctions = {
+        name: setAuthorName,
+        role: setAuthorRole,
+        email: setAuthorEmail,
+        company: setAuthorCompany,
+    };
 
-        props.updateAuthorHandler(authorName, authorRole, authorEmail, authorCompany);
-    }
+    const updateAuthorHandler = (field, value) => {
+        if (updateFunctions[field]) {
+            updateFunctions[field](value);
+
+            const updatedValues = {
+                name: authorName,
+                role: authorRole,
+                email: authorEmail,
+                company: authorCompany,
+                [field]: value,
+            };
+
+            props.updateAuthorHandler(
+                props.index,
+                updatedValues.name,
+                updatedValues.role,
+                updatedValues.email,
+                updatedValues.company
+            );
+        } else {
+            console.log("No field found");
+        }
+    };
 
     const roles = [
-        'Developer',
-        'Project Manager',
-        'Designer',
-        'Tester',
-        'Documentation Writer',
-        'Reviewer',
-        'Support',
-        'Translator',
-        'Security',
+        "Developer",
+        "Project Manager",
+        "Designer",
+        "Tester",
+        "Documentation Writer",
+        "Reviewer",
+        "Support",
+        "Translator",
+        "Security",
     ];
 
     return (
         <Fragment>
             <table className="single-author-component mb-4">
                 <tbody>
-                    <tr>
+
+                <tr>
                         <td>
                             <FontAwesomeIcon className="me-1" icon="fa-solid fa-users"/>
                             <label className="me-2" htmlFor="name">Name</label>
@@ -69,7 +81,7 @@ export const SingleAuthorComponent = (props) => {
                             <select
                                 className="block me-2"
                                 name="role"
-                                value={props.author.role}
+                                value={authorRole}
                                 onChange={(e) => {
                                     updateAuthorHandler('role', e.target.value);
                                 }}>
@@ -97,7 +109,7 @@ export const SingleAuthorComponent = (props) => {
                                 className="block"
                                 type="text"
                                 name="email"
-                                value={props.author.email}
+                                value={authorEmail}
                                 onChange={(e) => {
                                     updateAuthorHandler('email', e.target.value);
                                 }}
@@ -119,7 +131,7 @@ export const SingleAuthorComponent = (props) => {
                                 className="block"
                                 type="text"
                                 name="company"
-                                value={props.author.company}
+                                value={authorCompany}
                                 onChange={(e) => {
                                     updateAuthorHandler('company', e.target.value);
                                 }}
@@ -129,5 +141,5 @@ export const SingleAuthorComponent = (props) => {
                 </tbody>
             </table>
         </Fragment>
-    )
-}
+    );
+};

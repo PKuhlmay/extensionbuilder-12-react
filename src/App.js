@@ -9,17 +9,32 @@ import {Fragment, useState} from "react";
 import {SingleAuthorComponent} from "./components/SingleComponents/SingleAuthorComponent";
 
 function App() {
-    // TODO remove this dummy data
     const [authors, setAuthors] = useState([]);
 
-    const addNewAuthorHandler = (author) => {
+    const defaultAuthor = {
+        name: '',
+        role: '',
+        email: '',
+        company: '',
+    }
+    const addNewAuthorHandler = () => {
         setAuthors((prevAuthors) => {
-            return [...prevAuthors, author];
+            return [...prevAuthors, defaultAuthor];
         });
     }
 
-    const updateAuthorHandler = (authorName, authorRole, authorEmail, authorCompany) => {
-        console.log("updatedAuthor", authorName, authorRole, authorEmail, authorCompany);
+    const updateAuthorHandler = (authorIndex, authorName, authorRole, authorEmail, authorCompany) => {
+        setAuthors((prevAuthors) => {
+            const updatedAuthors = [...prevAuthors];
+            updatedAuthors[authorIndex] = {
+                name: authorName,
+                role: authorRole,
+                email: authorEmail,
+                company: authorCompany,
+            };
+            return updatedAuthors;
+        });
+        console.log("Autor aktualisiert", authorIndex, authorName, authorRole, authorEmail, authorCompany);
     }
 
     return (
@@ -98,6 +113,9 @@ function App() {
                             </div>
                         </div>
                     </div>
+                    <pre>
+                        {JSON.stringify(authors, null, 2)}
+                    </pre>
                 </div>
                 <div className="col-8 text-start" id="right-column">
                     <div>

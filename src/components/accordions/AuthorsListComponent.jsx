@@ -14,6 +14,7 @@ export const AuthorsListComponent = (props) => {
                             <Fragment key={index}>
                                 <SingleAuthorComponent
                                     author={author}
+                                    index={index}
                                     updateAuthorHandler={props.updateAuthorHandler}
                                 />
                             </Fragment>
@@ -23,8 +24,7 @@ export const AuthorsListComponent = (props) => {
             </ul>
             <button
                 className="btn btn-success"
-                onClick={props.addAuthorsHandler
-                }>
+                onClick={props.addAuthorsHandler}>
                 <FontAwesomeIcon className="me-1" icon="fa-solid fa-user-plus" />
                 Add new author
             </button>
