@@ -9,6 +9,25 @@ import {Fragment, useState} from "react";
 import {SingleAuthorComponent} from "./components/SingleComponents/SingleAuthorComponent";
 
 function App() {
+    const [extensionProperties, setExtensionProperties] = useState(
+        {
+            extensionName: '',
+            extensionVendorName: '',
+            extensionKey: '',
+            extensionDescription: '',
+            extensionCategory: '',
+            extensionVersion: '',
+            extensionState: 'a',
+            extensionSourceLanguageXliffFiles: 'en',
+            extensionTargetTYPO3Versions: '12.4',
+            extensionDependsOn: '',
+            extensionDisableVersioning: false,
+            extensionDisableLocalization: false,
+            extensionGenerateDocumentation: true,
+            extensionGenerateGitRepository: true,
+            extensionGenerateEditorconfig: true,
+        }
+    );
     const [authors, setAuthors] = useState([]);
     const [plugins, setPlugins] = useState([]);
     const [modules, setModules] = useState([]);
@@ -53,6 +72,42 @@ function App() {
         setPlugins((prevPlugins) => {
             return [...prevPlugins, defaultPlugin];
         });
+    }
+
+    const updateExtensionPropertiesHandler = (
+        extensionName,
+        extensionVendorName,
+        extensionKey,
+        extensionDescription,
+        extensionCategory,
+        extensionVersion,
+        extensionState,
+        extensionSourceLanguageXliffFiles,
+        extensionTargetTYPO3Versions,
+        extensionDependsOn,
+        extensionDisableVersioning,
+        extensionDisableLocalization,
+        extensionGenerateDocumentation,
+        extensionGenerateGitRepository,
+        extensionGenerateEditorconfig
+    ) => {
+       setExtensionProperties({
+            extensionName: extensionName,
+            extensionVendorName: extensionVendorName,
+            extensionKey: extensionKey,
+            extensionDescription: extensionDescription,
+            extensionCategory: extensionCategory,
+            extensionVersion: extensionVersion,
+            extensionState: extensionState,
+            extensionSourceLanguageXliffFiles: extensionSourceLanguageXliffFiles,
+            extensionTargetTYPO3Versions: extensionTargetTYPO3Versions,
+            extensionDependsOn: extensionDependsOn,
+            extensionDisableVersioning: extensionDisableVersioning,
+            extensionDisableLocalization: extensionDisableLocalization,
+            extensionGenerateDocumentation: extensionGenerateDocumentation,
+            extensionGenerateGitRepository: extensionGenerateGitRepository,
+            extensionGenerateEditorconfig: extensionGenerateEditorconfig,
+       })
     }
 
     const updateAuthorHandler = (authorIndex, authorName, authorRole, authorEmail, authorCompany) => {
@@ -116,7 +171,10 @@ function App() {
                                  aria-labelledby="headingAccordionExtensionProperties"
                                  data-bs-parent="#accordionExtensionProperties">
                                 <div className="accordion-body">
-                                    <ExtensionPropertiesComponent/>
+                                    <ExtensionPropertiesComponent
+                                        extensionProperties={extensionProperties}
+                                        updateExtensionPropertiesHandler={updateExtensionPropertiesHandler}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -188,6 +246,10 @@ function App() {
                 </div>
                 <div className="col-8 text-start" id="right-column">
 
+                    <pre>
+                        {JSON.stringify(extensionProperties, null, 2)}
+                    </pre>
+                    <hr />
                     <pre>
                         {JSON.stringify(authors, null, 2)}
                     </pre>
