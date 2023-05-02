@@ -246,18 +246,22 @@ function App() {
                 </div>
                 <div className="col-8 text-start" id="right-column">
 
+                    <h4>Extension Properties</h4>
                     <pre>
                         {JSON.stringify(extensionProperties, null, 2)}
                     </pre>
                     <hr />
+                    <h4>Authors</h4>
                     <pre>
                         {JSON.stringify(authors, null, 2)}
                     </pre>
                     <hr />
+                    <h4>Plugins</h4>
                     <pre>
                         {JSON.stringify(plugins, null, 2)}
                     </pre>
                     <hr />
+                    <h4>Modules</h4>
                     <pre>
                         {JSON.stringify(modules, null, 2)}
                     </pre>

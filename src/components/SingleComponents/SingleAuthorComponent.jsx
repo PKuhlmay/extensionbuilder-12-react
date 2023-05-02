@@ -51,95 +51,68 @@ export const SingleAuthorComponent = (props) => {
     ];
 
     return (
-        <Fragment>
-            <table className="single-author-component mb-4">
-                <tbody>
-
-                <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-users"/>
-                            <label className="me-2" htmlFor="name">Name</label>
-                        </td>
-                        <td className="single-input-field">
-                            <input
-                                className="block me-2"
-                                type="text"
-                                name="name"
-                                value={authorName}
-                                onChange={(e) => {
-                                    updateAuthorHandler('name', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-flask"/>
-                            <label className="me-2" htmlFor="role">Role</label>
-                        </td>
-                        <td>
-                            <select
-                                className="block me-2"
-                                name="role"
-                                value={authorRole}
-                                onChange={(e) => {
-                                    updateAuthorHandler('role', e.target.value);
-                                }}>
-                                {
-                                    roles.map((role, index) => {
-                                        return (
-                                            <option
-                                                key={index}
-                                                value={role}
-                                            >
-                                                {role}
-                                            </option>
-                                        )
-                                    })
-                                }
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-envelope"/>
-                            <label className="me-2" htmlFor="email">Email</label></td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="email"
-                                value={authorEmail}
-                                onChange={(e) => {
-                                    updateAuthorHandler('email', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label
-                                htmlFor="company"
-                                className="me-2"
-                            >
-                                Company
-                            </label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="company"
-                                value={authorCompany}
-                                onChange={(e) => {
-                                    updateAuthorHandler('company', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </Fragment>
+        <div className="mb-5">
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Author Name"
+                    aria-label="Author Name"
+                    aria-describedby="basic-addon1"
+                    value={authorName}
+                    onChange={(e) => {
+                        updateAuthorHandler('name', e.target.value);
+                    }}
+                />
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-flask" /></span>
+                <select
+                    className="form-select"
+                    aria-label="Role"
+                    onChange={(e) => {
+                        updateAuthorHandler('role', e.target.value);
+                    }}
+                >
+                    <option>Please choose the role</option>
+                    {
+                        roles.map((role, index) => {
+                            return (
+                                <option key={index} value={role}>{role}</option>
+                            )
+                        })
+                    }
+                </select>
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Author E-Mail"
+                    aria-label="Author E-Mail"
+                    aria-describedby="basic-addon1"
+                    value={authorEmail}
+                    onChange={(e) => {
+                        updateAuthorHandler('email', e.target.value);
+                    }}
+                />
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-building" /></span>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Company"
+                    aria-label="Company"
+                    aria-describedby="basic-addon1"
+                    value={authorCompany}
+                    onChange={(e) => {
+                        updateAuthorHandler('company', e.target.value);
+                    }}
+                />
+            </div>
+        </div>
     );
 };

@@ -58,124 +58,100 @@ export const SingleModuleComponent = (props) => {
 
     return (
         <Fragment>
-            <table className="single-module-component mb-4">
-                <tbody>
+            <div className="mb-5">
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Module Name"
+                        aria-label="Module Name"
+                        aria-describedby="basic-addon1"
+                        value={moduleName}
+                        onChange={(e) => {
+                            updateModuleHandler('name', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-key" /></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Module key"
+                        aria-label="Module key"
+                        aria-describedby="basic-addon1"
+                        value={moduleKey}
+                        onChange={(e) => {
+                            updateModuleHandler('email', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <textarea
+                        rows="3"
+                        type="text"
+                        className="form-control"
+                        placeholder="Module Description"
+                        aria-label="Module Description"
+                        aria-describedby="basic-addon1"
+                        value={moduleDescription}
+                        onChange={(e) => {
+                            updateModuleHandler('company', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Module tab label"
+                        aria-label="Module tab label"
+                        aria-describedby="basic-addon1"
+                        value={moduleTabLabel}
+                        onChange={(e) => {
+                            updateModuleHandler('tabLabel', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <select
+                        className="form-select"
+                        aria-label="Role"
+                        onChange={(e) => {
+                            updateModuleHandler('role', e.target.value);
+                        }}
+                    >
+                        <option>Please choose the main module</option>
+                        {
+                            mainModules.map((module, index) => {
+                                return (
+                                    <option key={index} value={module}>{module}</option>
+                                )
+                            })
+                        }
+                    </select>
+                </div>
 
-                <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-users"/>
-                            <label className="me-2" htmlFor="name">Name</label>
-                        </td>
-                        <td className="single-input-field">
-                            <input
-                                className="block me-2"
-                                type="text"
-                                name="name"
-                                value={moduleName}
-                                onChange={(e) => {
-                                    updateModuleHandler('name', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-flask"/>
-                            <label className="me-2" htmlFor="key">Key</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="key"
-                                value={moduleKey}
-                                onChange={(e) => {
-                                    updateModuleHandler('key', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-envelope"/>
-                            <label className="me-2" htmlFor="description">Description</label></td>
-                        <td>
-                            <textarea
-                                className="block"
-                                type="text"
-                                name="description"
-                                value={moduleDescription}
-                                onChange={(e) => {
-                                    updateModuleHandler('description', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label htmlFor="tabLabel" className="me-2">Tab Label</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="tabLabel"
-                                value={moduleTabLabel}
-                                onChange={(e) => {
-                                    updateModuleHandler('tabLabel', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label htmlFor="mainModule" className="me-2">Main Module</label>
-                        </td>
-                        <td>
-                            <select
-                                className="block me-2"
-                                name="mainModule"
-                                value={moduleMainModule}
-                                onChange={(e) => {
-                                    updateModuleHandler('mainModule', e.target.value);
-                                }}>
-                                {
-                                    mainModules.map((module, index) => {
-                                        return (
-                                            <option
-                                                key={index}
-                                                value={module}
-                                            >
-                                                {module}
-                                            </option>
-                                        )
-                                    })
-                                }
-                            </select>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label htmlFor="controllerActionsCachable" className="me-2">Controller Actions</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="controllerActionsCachable"
-                                value={moduleControllerActionsCachable}
-                                onChange={(e) => {
-                                    updateModuleHandler('controllerActionsCachable', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <textarea
+                        rows="3"
+                        type="text"
+                        className="form-control"
+                        placeholder="Cachable controller actions"
+                        aria-label="Cachable controller actions"
+                        aria-describedby="basic-addon1"
+                        value={moduleControllerActionsCachable}
+                        onChange={(e) => {
+                            updateModuleHandler('controllerActionsCachable', e.target.value);
+                        }}
+                    />
+                </div>
+            </div>
         </Fragment>
     );
 };

@@ -44,94 +44,81 @@ export const SinglePluginComponent = (props) => {
 
     return (
         <Fragment>
-            <table className="single-plugin-component mb-4">
-                <tbody>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-users"/>
-                            <label className="me-2" htmlFor="name">Name</label>
-                        </td>
-                        <td className="single-input-field">
-                            <input
-                                className="block me-2"
-                                type="text"
-                                name="name"
-                                value={pluginName}
-                                onChange={(e) => {
-                                    updatePluginHandler('name', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-flask"/>
-                            <label className="me-2" htmlFor="key">Key</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="key"
-                                value={pluginKey}
-                                onChange={(e) => {
-                                    updatePluginHandler('key', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-envelope"/>
-                            <label className="me-2" htmlFor="description">Description</label></td>
-                        <td>
-                            <textarea
-                                className="block"
-                                type="text"
-                                name="description"
-                                value={pluginDescription}
-                                onChange={(e) => {
-                                    updatePluginHandler('description', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label htmlFor="controllerActionsCachable" className="me-2">Controller Actions</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="controllerActionsCachable"
-                                value={pluginControllerActionsCachable}
-                                onChange={(e) => {
-                                    updatePluginHandler('controllerActionsCachable', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <FontAwesomeIcon className="me-1" icon="fa-solid fa-building"/>
-                            <label htmlFor="controllerActionsNonCachable" className="me-2">Non cachable Controller Actions</label>
-                        </td>
-                        <td>
-                            <input
-                                className="block"
-                                type="text"
-                                name="controllerActionsNonCachable"
-                                value={pluginControllerActionsNonCachable}
-                                onChange={(e) => {
-                                    updatePluginHandler('controllerActionsNonCachable', e.target.value);
-                                }}
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className="mb-5">
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Plugin Name"
+                        aria-label="Plugin Name"
+                        aria-describedby="basic-addon1"
+                        value={pluginName}
+                        onChange={(e) => {
+                            updatePluginHandler('name', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-key" /></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Plugin key"
+                        aria-label="Plugin key"
+                        aria-describedby="basic-addon1"
+                        value={pluginKey}
+                        onChange={(e) => {
+                            updatePluginHandler('key', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <textarea
+                        type="text"
+                        rows="4"
+                        className="form-control"
+                        placeholder="Description"
+                        aria-label="Description"
+                        aria-describedby="basic-addon1"
+                        value={pluginDescription}
+                        onChange={(e) => {
+                            updatePluginHandler('description', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <textarea
+                        type="text"
+                        rows="4"
+                        className="form-control"
+                        placeholder="Cachable controller actions"
+                        aria-label="Cachable controller actions"
+                        aria-describedby="basic-addon1"
+                        value={pluginControllerActionsCachable}
+                        onChange={(e) => {
+                            updatePluginHandler('controllerActionsCachable', e.target.value);
+                        }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    <textarea
+                        type="text"
+                        rows="4"
+                        className="form-control"
+                        placeholder="Non cachable controller actions"
+                        aria-label="Non cachable controller actions"
+                        aria-describedby="basic-addon1"
+                        value={pluginControllerActionsNonCachable}
+                        onChange={(e) => {
+                            updatePluginHandler('controllerActionsNonCachable', e.target.value);
+                        }}
+                    />
+                </div>
+            </div>
         </Fragment>
     );
 };
