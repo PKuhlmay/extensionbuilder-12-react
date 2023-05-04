@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+import "./styles/custom-bootstrap.scss";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

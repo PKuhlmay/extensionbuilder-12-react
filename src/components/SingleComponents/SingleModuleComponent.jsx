@@ -59,8 +59,7 @@ export const SingleModuleComponent = (props) => {
     return (
         <Fragment>
             <div className="mb-5">
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         className="form-control"
@@ -72,9 +71,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('name', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-key" /></span>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         className="form-control"
@@ -86,9 +85,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('email', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <textarea
                         rows="3"
                         type="text"
@@ -101,9 +100,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('company', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         className="form-control"
@@ -115,9 +114,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('tabLabel', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <select
                         className="form-select"
                         aria-label="Role"
@@ -134,10 +133,10 @@ export const SingleModuleComponent = (props) => {
                             })
                         }
                     </select>
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>
                 </div>
 
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <textarea
                         rows="3"
                         type="text"
@@ -150,6 +149,7 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('controllerActionsCachable', e.target.value);
                         }}
                     />
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>
                 </div>
             </div>
         </Fragment>

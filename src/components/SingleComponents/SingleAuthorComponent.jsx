@@ -52,8 +52,7 @@ export const SingleAuthorComponent = (props) => {
 
     return (
         <div className="mb-5">
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -65,12 +64,13 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('name', e.target.value);
                     }}
                 />
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user" /></span>Author</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-flask" /></span>
+            <div className="form-floating mb-3">
                 <select
                     className="form-select"
                     aria-label="Role"
+                    id="role"
                     onChange={(e) => {
                         updateAuthorHandler('role', e.target.value);
                     }}
@@ -84,11 +84,12 @@ export const SingleAuthorComponent = (props) => {
                         })
                     }
                 </select>
+                <label htmlFor="role"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user-tag" /></span>Role</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
+                    id="email"
                     className="form-control"
                     placeholder="Author E-Mail"
                     aria-label="Author E-Mail"
@@ -98,11 +99,12 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('email', e.target.value);
                     }}
                 />
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>E-Mail</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-building" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
+                    id="company"
                     className="form-control"
                     placeholder="Company"
                     aria-label="Company"
@@ -112,6 +114,7 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('company', e.target.value);
                     }}
                 />
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-building" /></span>Company</label>
             </div>
         </div>
     );

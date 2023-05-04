@@ -1,0 +1,43 @@
+// Fonts
+@font-face {
+    font-family: 'TYPO3';
+    src: url('../TYPO3Fonts/TYPO3-Fonts-BASIC-Kit/Share-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TYPO3';
+    src: url('../TYPO3Fonts/TYPO3-Fonts-BASIC-Kit/Share-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TYPO3';
+    src: url('../TYPO3Fonts/TYPO3-Fonts-BASIC-Kit/Share-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+// Colors
+$primary: #ff8700;
+$primary-light: #ffab4b;
+$secondary: #0080c9;
+$success: #5abc55;
+$danger: #dd123d;
+$info: #0080ff;
+$warning: #ffc800;
+$dark: #515151;
+$light: #b9b9b9;
+
+$font-family-base: 'TYPO3', sans-serif;
+
+// Buttons
+.btn-success {
+    color: white !important;
+}
+
+// Importiere die Bootstrap-SCSS-Datei
+@import '~bootstrap/scss/bootstrap';

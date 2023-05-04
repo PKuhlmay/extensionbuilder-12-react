@@ -45,8 +45,7 @@ export const SinglePluginComponent = (props) => {
     return (
         <Fragment>
             <div className="mb-5">
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         className="form-control"
@@ -58,9 +57,9 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('name', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-puzzle-piece" /></span>Plugin Name</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-key" /></span>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         className="form-control"
@@ -72,9 +71,9 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('key', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Plugin key</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <textarea
                         type="text"
                         rows="4"
@@ -87,9 +86,9 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('description', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Description</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <textarea
                         type="text"
                         rows="4"
@@ -102,9 +101,9 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('controllerActionsCachable', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Cachable controller actions</label>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                <div className="form-floating mb-3">
                     <textarea
                         type="text"
                         rows="4"
@@ -117,6 +116,7 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('controllerActionsNonCachable', e.target.value);
                         }}
                     />
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Non cachable controller actions</label>
                 </div>
             </div>
         </Fragment>

@@ -3,7 +3,14 @@ import {ExtensionPropertiesComponent} from "./components/accordions/ExtensionPro
 import {ModulesListComponent} from "./components/accordions/ModulesListComponent";
 import {AuthorsListComponent} from "./components/accordions/AuthorsListComponent";
 import {PluginsListComponent} from "./components/accordions/PluginsListComponent";
-import {useState} from "react";
+import {useCallback, useMemo, useState} from "react";
+import {ReactFlowComponent} from "./components/ReactFlow/ReactFlowComponent";
+import {useEdgesState, useNodesState} from "reactflow";
+import ReactFlow, { addEdge, applyEdgeChanges, applyNodeChanges } from 'reactflow';
+
+
+const initialNodes = [];
+const initialEdges = [];
 
 function App() {
     const [extensionProperties, setExtensionProperties] = useState(
@@ -14,15 +21,15 @@ function App() {
             extensionDescription: '',
             extensionCategory: '',
             extensionVersion: '',
-            extensionState: 'a',
+            extensionState: '',
             extensionSourceLanguageXliffFiles: 'en',
             extensionTargetTYPO3Versions: '12.4',
             extensionDependsOn: '',
             extensionDisableVersioning: false,
             extensionDisableLocalization: false,
-            extensionGenerateDocumentation: true,
-            extensionGenerateGitRepository: true,
-            extensionGenerateEditorconfig: true,
+            extensionGenerateDocumentation: false,
+            extensionGenerateGitRepository: false,
+            extensionGenerateEditorconfig: false,
         }
     );
     const [authors, setAuthors] = useState([]);
@@ -187,7 +194,7 @@ function App() {
                             <h2 className="accordion-header" id="headingAccordionAuthors">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseAccordionAuthors" aria-expanded="true" aria-controls="collapseAccordionAuthors">
-                                    Authors
+                                    Extension authors
                                 </button>
                             </h2>
                             <div id="collapseAccordionAuthors" className="accordion-collapse collapse"
@@ -208,7 +215,7 @@ function App() {
                             <h2 className="accordion-header" id="headingAccordionPlugins">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseAccordionPlugins" aria-expanded="true" aria-controls="collapseAccordionPlugins">
-                                    Plugins
+                                    Frontend plugins
                                 </button>
                             </h2>
                             <div id="collapseAccordionPlugins" className="accordion-collapse collapse"
@@ -230,7 +237,7 @@ function App() {
                             <h2 className="accordion-header" id="headingAccordionModules">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseAccordionModules" aria-expanded="true" aria-controls="collapseAccordionModules">
-                                    Modules
+                                    Backend modules
                                 </button>
                             </h2>
                             <div id="collapseAccordionModules" className="accordion-collapse collapse"
@@ -278,14 +285,15 @@ function App() {
                                     <pre>
                                         {JSON.stringify(modules, null, 2)}
                                     </pre>
-                                    <hr />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="col-8 text-start" id="right-column">
-                    React flow
+                   <ReactFlowComponent
+
+                   />
                 </div>
             </div>
         </div>
