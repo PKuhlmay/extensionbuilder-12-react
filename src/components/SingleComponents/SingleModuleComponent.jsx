@@ -59,7 +59,8 @@ export const SingleModuleComponent = (props) => {
     return (
         <Fragment>
             <div className="mb-5">
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -71,9 +72,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('name', e.target.value);
                         }}
                     />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>
                     <input
                         type="text"
                         className="form-control"
@@ -85,24 +86,22 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('email', e.target.value);
                         }}
                     />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>
                     <textarea
-                        rows="3"
                         type="text"
                         className="form-control"
-                        placeholder="Module Description"
-                        aria-label="Module Description"
-                        aria-describedby="basic-addon1"
+                        id="exampleFormControlTextarea1"
+                        placeholder="Please enter the description for this module"
                         value={moduleDescription}
                         onChange={(e) => {
                             updateModuleHandler('company', e.target.value);
                         }}
-                    />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>
+                        rows="5" />
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>
                     <input
                         type="text"
                         className="form-control"
@@ -114,9 +113,9 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('tabLabel', e.target.value);
                         }}
                     />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>
                     <select
                         className="form-select"
                         aria-label="Role"
@@ -133,23 +132,19 @@ export const SingleModuleComponent = (props) => {
                             })
                         }
                     </select>
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>
                 </div>
-
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>
                     <textarea
-                        rows="3"
                         type="text"
                         className="form-control"
-                        placeholder="Cachable controller actions"
-                        aria-label="Cachable controller actions"
-                        aria-describedby="basic-addon1"
+                        id="exampleFormControlTextarea1"
+                        placeholder="Blog => edit, update, delete"
                         value={moduleControllerActionsCachable}
                         onChange={(e) => {
                             updateModuleHandler('controllerActionsCachable', e.target.value);
                         }}
-                    />
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>
+                        rows="5" />
                 </div>
             </div>
         </Fragment>

@@ -113,7 +113,8 @@ export const ExtensionPropertiesComponent = (props) => {
 
     return (
         <Fragment>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Extension Name</label>
                 <input
                     type="text"
                     className="form-control"
@@ -125,9 +126,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionName', e.target.value);
                     }}
                 />
-                <label htmlFor="extensionName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Extension Name</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionVendorName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Vendor Name</label>
                 <input
                     type="text"
                     className="form-control"
@@ -139,9 +140,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionVendorName', e.target.value);
                     }}
                 />
-                <label htmlFor="extensionVendorName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Vendor Name</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionKey"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Extension key</label>
                 <input
                     type="text"
                     className="form-control"
@@ -153,24 +154,22 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionKey', e.target.value);
                     }}
                 />
-                <label htmlFor="extensionKey"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Extension key</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Extension Description</label>
                 <textarea
+                    type="text"
                     className="form-control"
-                    style={{ height: '100px' }}
-                    aria-label="With textarea"
-                    placeholder="Extension Description"
+                    id="exampleFormControlTextarea1"
+                    placeholder="Please enter the description for this extension"
                     value={extensionDescription}
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionDescription', e.target.value);
                     }}
-                >
-                    {extensionDescription}
-                </textarea>
-                <label htmlFor="extensionDescription"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Extension Description</label>
+                    rows="5" />
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionCategory"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>Category</label>
                 <select
                     className="form-select"
                     aria-label="Category"
@@ -187,9 +186,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
-                <label htmlFor="extensionCategory"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>Category</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionVersion"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>Extension Version</label>
                 <input
                     type="text"
                     className="form-control"
@@ -201,9 +200,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionVersion', e.target.value);
                     }}
                 />
-                <label htmlFor="extensionVersion"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>Extension Version</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionState"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>State</label>
                 <select
                     className="form-select"
                     aria-label="State"
@@ -220,51 +219,51 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
-                <label htmlFor="extensionState"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>State</label>
             </div>
 
             <div className="form-check form-switch mb-2">
+                <label className="form-check-label" htmlFor="extensionDisableVersioning">Disable versioning</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionDisableVersioning"
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionDisableVersioning', e.target.checked);
                     }}
                 />
-                <label className="form-check-label" htmlFor="extensionDisableVersioning">Disable versioning</label>
             </div>
             <div className="form-check form-switch mb-2">
+                <label className="form-check-label" htmlFor="extensionDisableLocalization">Disable localization</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionDisableLocalization"
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionDisableLocalization', e.target.checked);
                     }}
                 />
-                <label className="form-check-label" htmlFor="extensionDisableLocalization">Disable localization</label>
             </div>
             <div className="form-check form-switch mb-2">
+                <label className="form-check-label" htmlFor="extensionGenerateDocumentation">Generate documentation</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateDocumentation"
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionGenerateDocumentation', e.target.checked);
                     }}
                 />
-                <label className="form-check-label" htmlFor="extensionGenerateDocumentation">Generate documentation</label>
             </div>
             <div className="form-check form-switch mb-2">
+                <label className="form-check-label" htmlFor="extensionGenerateGitRepository">Generate git repository</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateGitRepository"
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionGenerateGitRepository', e.target.checked);
                     }}
                 />
-                <label className="form-check-label" htmlFor="extensionGenerateGitRepository">Generate git repository</label>
             </div>
             <div className="form-check form-switch mb-3">
+                <label className="form-check-label" htmlFor="extensionGenerateEditorconfig">Generate editorconfig</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateEditorconfig"
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionGenerateEditorconfig', e.target.checked);
                     }}
                 />
-                <label className="form-check-label" htmlFor="extensionGenerateEditorconfig">Generate editorconfig</label>
             </div>
 
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionSourceLanguageXliffFiles"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Source language for xliff files</label>
                 <input
                     type="text"
                     className="form-control"
@@ -276,10 +275,10 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionSourceLanguageXliffFiles', e.target.value);
                     }}
                 />
-                <label htmlFor="extensionSourceLanguageXliffFiles"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Source language for xliff files</label>
             </div>
 
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="extensionTargetTYPO3Versions"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Target TYPO3 versions</label>
                 <select
                     defaultChecked={extensionTargetTYPO3Versions}
                     className="form-select" aria-label="Default select example"
@@ -296,22 +295,24 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
-                <label htmlFor="extensionTargetTYPO3Versions"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Target TYPO3 versions</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label
+                    htmlFor="exampleFormControlTextarea1"
+                    className="form-label">
+                    <span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+                    Depends on
+                </label>
                 <textarea
+                    type="text"
                     className="form-control"
-                    style={{ height: '100px' }}
-                    aria-label="With textarea"
-                    placeholder="Depends on"
+                    id="exampleFormControlTextarea1"
+                    placeholder="typo3 => 11.5.0"
                     value={extensionDependsOn}
                     onChange={(e) => {
                         updateExtensionPropertiesHandler('extensionDependsOn', e.target.value);
                     }}
-                >
-                    {extensionDependsOn}
-                </textarea>
-                <label htmlFor="extensionDependsOn"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Depends on</label>
+                    rows="5" />
             </div>
         </Fragment>
     )

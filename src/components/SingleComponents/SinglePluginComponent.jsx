@@ -45,7 +45,8 @@ export const SinglePluginComponent = (props) => {
     return (
         <Fragment>
             <div className="mb-5">
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-puzzle-piece" /></span>Plugin Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -57,9 +58,9 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('name', e.target.value);
                         }}
                     />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-puzzle-piece" /></span>Plugin Name</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Plugin key</label>
                     <input
                         type="text"
                         className="form-control"
@@ -71,52 +72,45 @@ export const SinglePluginComponent = (props) => {
                             updatePluginHandler('key', e.target.value);
                         }}
                     />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Plugin key</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Description</label>
                     <textarea
                         type="text"
-                        rows="4"
                         className="form-control"
-                        placeholder="Description"
-                        aria-label="Description"
-                        aria-describedby="basic-addon1"
+                        id="exampleFormControlTextarea1"
+                        placeholder="Please insert a description"
                         value={pluginDescription}
                         onChange={(e) => {
                             updatePluginHandler('description', e.target.value);
                         }}
-                    />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Description</label>
+                        rows="5" />
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Cachable controller actions</label>
                     <textarea
                         type="text"
-                        rows="4"
                         className="form-control"
-                        placeholder="Cachable controller actions"
-                        aria-label="Cachable controller actions"
-                        aria-describedby="basic-addon1"
+                        id="exampleFormControlTextarea1"
+                        placeholder="Blog => list, show"
                         value={pluginControllerActionsCachable}
                         onChange={(e) => {
                             updatePluginHandler('controllerActionsCachable', e.target.value);
                         }}
-                    />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Cachable controller actions</label>
+                        rows="5" />
                 </div>
-                <div className="form-floating mb-3">
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Non cachable controller actions</label>
                     <textarea
                         type="text"
-                        rows="4"
                         className="form-control"
-                        placeholder="Non cachable controller actions"
-                        aria-label="Non cachable controller actions"
-                        aria-describedby="basic-addon1"
+                        id="exampleFormControlTextarea1"
+                        placeholder="Blog => edit, update, delete"
                         value={pluginControllerActionsNonCachable}
                         onChange={(e) => {
                             updatePluginHandler('controllerActionsNonCachable', e.target.value);
                         }}
-                    />
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Non cachable controller actions</label>
+                        rows="5" />
                 </div>
             </div>
         </Fragment>

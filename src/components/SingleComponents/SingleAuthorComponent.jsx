@@ -52,7 +52,8 @@ export const SingleAuthorComponent = (props) => {
 
     return (
         <div className="mb-5">
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user" /></span>Author</label>
                 <input
                     type="text"
                     className="form-control"
@@ -64,9 +65,9 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('name', e.target.value);
                     }}
                 />
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user" /></span>Author</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="role"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user-tag" /></span>Role</label>
                 <select
                     className="form-select"
                     aria-label="Role"
@@ -84,9 +85,9 @@ export const SingleAuthorComponent = (props) => {
                         })
                     }
                 </select>
-                <label htmlFor="role"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user-tag" /></span>Role</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>E-Mail</label>
                 <input
                     type="text"
                     id="email"
@@ -99,9 +100,9 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('email', e.target.value);
                     }}
                 />
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>E-Mail</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3">
+                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-building" /></span>Company</label>
                 <input
                     type="text"
                     id="company"
@@ -114,7 +115,6 @@ export const SingleAuthorComponent = (props) => {
                         updateAuthorHandler('company', e.target.value);
                     }}
                 />
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-building" /></span>Company</label>
             </div>
         </div>
     );
