@@ -43,8 +43,6 @@ export const ExtensionPropertiesComponent = (props) => {
     ];
 
     const targetTYPO3Versions = [
-        "10.4",
-        "11.5",
         "12.4"
     ];
 
@@ -115,8 +113,7 @@ export const ExtensionPropertiesComponent = (props) => {
 
     return (
         <Fragment>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -128,9 +125,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionName', e.target.value);
                     }}
                 />
+                <label htmlFor="extensionName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Extension Name</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -142,9 +139,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionVendorName', e.target.value);
                     }}
                 />
+                <label htmlFor="extensionVendorName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Vendor Name</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-key" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -156,11 +153,12 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionKey', e.target.value);
                     }}
                 />
+                <label htmlFor="extensionKey"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Extension key</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-question" /></span>
+            <div className="form-floating mb-3">
                 <textarea
                     className="form-control"
+                    style={{ height: '100px' }}
                     aria-label="With textarea"
                     placeholder="Extension Description"
                     value={extensionDescription}
@@ -170,9 +168,9 @@ export const ExtensionPropertiesComponent = (props) => {
                 >
                     {extensionDescription}
                 </textarea>
+                <label htmlFor="extensionDescription"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Extension Description</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>
+            <div className="form-floating mb-3">
                 <select
                     className="form-select"
                     aria-label="Category"
@@ -189,9 +187,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
+                <label htmlFor="extensionCategory"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>Category</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -203,9 +201,9 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionVersion', e.target.value);
                     }}
                 />
+                <label htmlFor="extensionVersion"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>Extension Version</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+            <div className="form-floating mb-3">
                 <select
                     className="form-select"
                     aria-label="State"
@@ -222,6 +220,7 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
+                <label htmlFor="extensionState"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>State</label>
             </div>
 
             <div className="form-check form-switch mb-2">
@@ -265,8 +264,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 <label className="form-check-label" htmlFor="extensionGenerateEditorconfig">Generate editorconfig</label>
             </div>
 
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-flag" /></span>
+            <div className="form-floating mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -278,10 +276,10 @@ export const ExtensionPropertiesComponent = (props) => {
                         updateExtensionPropertiesHandler('extensionSourceLanguageXliffFiles', e.target.value);
                     }}
                 />
+                <label htmlFor="extensionSourceLanguageXliffFiles"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Source language for xliff files</label>
             </div>
 
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><FontAwesomeIcon icon="fa-solid fa-question" /></span>
+            <div className="form-floating mb-3">
                 <select
                     defaultChecked={extensionTargetTYPO3Versions}
                     className="form-select" aria-label="Default select example"
@@ -298,11 +296,12 @@ export const ExtensionPropertiesComponent = (props) => {
                         })
                     }
                 </select>
+                <label htmlFor="extensionTargetTYPO3Versions"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Target TYPO3 versions</label>
             </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text"><FontAwesomeIcon className="me-1" icon="fa-solid fa-question" /></span>
+            <div className="form-floating mb-3">
                 <textarea
                     className="form-control"
+                    style={{ height: '100px' }}
                     aria-label="With textarea"
                     placeholder="Depends on"
                     value={extensionDependsOn}
@@ -312,6 +311,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 >
                     {extensionDependsOn}
                 </textarea>
+                <label htmlFor="extensionDependsOn"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Depends on</label>
             </div>
         </Fragment>
     )

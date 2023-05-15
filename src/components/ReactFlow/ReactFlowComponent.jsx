@@ -54,7 +54,7 @@ export const ReactFlowComponent = (props) => {
     const nodeColor = (node) => {
         switch (node.type) {
             case 'customModel':
-                return '#6ede87';
+                return '#ff8700';
             case 'output':
                 return '#6865A5';
             default:
@@ -81,11 +81,37 @@ export const ReactFlowComponent = (props) => {
                 y: event.clientY - reactFlowBounds.top,
             });
 
+            const data = {
+                label: "",
+                objectType: "",
+                isAggregateRoot: false,
+                enableSorting: false,
+                addDeletedField: false,
+                addHiddenField: false,
+                addStarttimeEndtimeFields: false,
+                enableCategorization: false,
+                description: "",
+                mapToExistingTable: "",
+                extendExistingModelClass: "",
+                actions: {
+                    actionIndex: false,
+                    actionList: false,
+                    actionShow: false,
+                    actionNewCreate: false,
+                    actionEditUpdate: false,
+                    actionDelete: false,
+                },
+                customActions: [
+
+                ],
+                properties: [],
+                relations: [],
+            };
             const newNode = {
                 id: getId(),
                 type,
                 position,
-                data: { label: `${type} node`, test: '123' },
+                data,
                 dragHandle: '.drag-handle',
                 draggable: true,
             };
@@ -123,7 +149,9 @@ export const ReactFlowComponent = (props) => {
                     <Background variant="cross" />
                 </ReactFlow>
                 </div>
-                <Sidebar />
+                <Sidebar
+                    nodes={nodes}
+                />
             </ReactFlowProvider>
         </div>
     )
