@@ -1,6 +1,7 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import { Handle, Position } from 'reactflow';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { Popover } from 'bootstrap';
 
 const handleStyle = { left: 10 };
 
@@ -40,6 +41,10 @@ export const CustomModelNode = (props) => {
         { name: "None", value : "none" },
     ];
 
+    const popoverText = {
+        'objectType': 'There is another object type called ValueObject, please refer to the documentation for more information.',
+    }
+
     const addEmptyProperty = () => {
         setProperties([...properties, {
             name: '',
@@ -64,6 +69,13 @@ export const CustomModelNode = (props) => {
         console.log(props.data.customActions);
     }
 
+    useEffect(() => {
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl, {
+
+        }));
+    }, []);
+
     return (
         <div className="custom-model-node">
             <div className="drag-handle"></div>
@@ -86,14 +98,22 @@ export const CustomModelNode = (props) => {
                          data-bs-parent="#accordionCustomModelNode">
                         <div className="accordion-body">
                             <div>
-                                <label htmlFor="objectType">Object type</label>
-                                <select name="objectType" id="objectType" className="nodrag"
+                                <label htmlFor="objectType" title="There is another type 'Value object'. Please refer to the documentation for this object type.">Object type: Entity&nbsp;
+                                    <span
+                                        style={{cursor: "pointer"}}
+                                        data-bs-container="body"
+                                            data-bs-toggle="popover" data-bs-placement="top"
+                                            data-bs-content={popoverText.objectType}>
+                                        <FontAwesomeIcon icon="fa-solid fa-circle-info" />
+                                    </span>
+                                </label>
+                                {/*<select name="objectType" id="objectType" className="nodrag"
                                     onChange={(e) => {
                                         props.data.objectType = e.target.value;
                                     }}
                                 >
                                     {objectTypes.map((objectType, index) => <option key={index} value={objectType}>{objectType}</option>)}
-                                </select>
+                                </select>*/}
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="isAggregateRoot">Is aggregate root:</label>
