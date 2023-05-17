@@ -5,7 +5,7 @@ import ReactFlow, {
     Background,
     addEdge,
     Controls,
-    SelectionMode, useNodesState, applyNodeChanges, applyEdgeChanges
+    SelectionMode, applyNodeChanges, applyEdgeChanges
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import {CustomModelNode} from "./CustomModelNode";

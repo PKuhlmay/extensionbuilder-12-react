@@ -1,13 +1,7 @@
 import './App.scss';
-import {ExtensionPropertiesComponent} from "./components/accordions/ExtensionPropertiesComponent";
-import {ModulesListComponent} from "./components/accordions/ModulesListComponent";
-import {AuthorsListComponent} from "./components/accordions/AuthorsListComponent";
-import {PluginsListComponent} from "./components/accordions/PluginsListComponent";
-import {useCallback, useMemo, useState} from "react";
-import {ReactFlowComponent} from "./components/ReactFlow/ReactFlowComponent";
-import {useEdgesState, useNodesState} from "reactflow";
-import ReactFlow, { addEdge, applyEdgeChanges, applyNodeChanges } from 'reactflow';
-
+import {useEffect, useState} from "react";
+import {LeftContentComponent} from "./components/views/LeftContentComponent";
+import {RightContentComponent} from "./components/views/RightContentComponent";
 
 const initialNodes = [];
 const initialEdges = [];

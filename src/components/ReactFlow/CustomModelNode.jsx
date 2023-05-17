@@ -1,17 +1,8 @@
-import {useCallback, useEffect, useState} from 'react';
-import { Handle, Position } from 'reactflow';
+import { useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { Popover } from 'bootstrap';
 
-const handleStyle = { left: 10 };
-
 export const CustomModelNode = (props) => {
-
-    const objectTypes = [
-        "Entity",
-        "Value object"
-    ];
-
     const [properties, setProperties] = useState([]);
     const [customActions, setCustomActions] = useState([]);
 
@@ -66,11 +57,11 @@ export const CustomModelNode = (props) => {
         props.data.customActions.push({
             name: ''
         });
-        console.log(props.data.customActions);
     }
 
     useEffect(() => {
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        // eslint-disable-next-line no-unused-vars
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl, {
 
         }));
@@ -256,6 +247,7 @@ export const CustomModelNode = (props) => {
                                     return (
                                         <div className="custom-model-node__action-wrapper">
                                             <input type="text" name="actionName" placeholder="Action name" />
+                                            {action}
                                         </div>
                                     )
                                 })
@@ -285,6 +277,7 @@ export const CustomModelNode = (props) => {
                                 properties.map((property) => {
                                     return (
                                         <div className="custom-model-node__property-wrapper">
+                                            {property}
                                             <div className="d-flex justify-content-between">
                                                 <input type="text" name="propertyName" placeholder="Property name" />
                                             </div>
