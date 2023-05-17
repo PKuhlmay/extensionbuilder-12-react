@@ -56,13 +56,19 @@
 
 #btn-sidebar-collapse {
     z-index: 100;
-    top: 30px;
+    top: 8px;
+    position: fixed;
+    transition: left 0.5s ease;
+    color: $dark;
+    background-color: $super-light;
+    border-color: $super-light;
 }
 
-#btn-sidebar-collapse {
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
+#btn-sidebar-collapse.collapsed {
+    left: 20px;
+}
+
+#btn-sidebar-collapse.expanded {
+    left: 420px;
 }
 

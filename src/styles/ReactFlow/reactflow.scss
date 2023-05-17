@@ -1,8 +1,11 @@
+@import "../custom-bootstrap";
+
 .dndflow {
     flex-direction: column;
     display: flex;
     flex-grow: 1;
     height: 100%;
+    background-color: $light;
 }
 
 .dndflow aside {
@@ -12,7 +15,7 @@
     background: #fcfcfc;
 
     .debug-output {
-        max-height: 100px;
+        max-height: 500px;
     }
 }
 

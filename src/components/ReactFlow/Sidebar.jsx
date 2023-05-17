@@ -8,7 +8,7 @@ export default (props) => {
     };
 
     return (
-        <aside>
+        <aside className="react-flow__sidebar">
             <div className="description">You can drag these nodes to the pane on the left.</div>
             <div className="dndnode custom-model-node" onDragStart={(event) => onDragStart(event, 'customModel')} draggable>
                 New Model Object

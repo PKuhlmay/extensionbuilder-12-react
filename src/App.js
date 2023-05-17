@@ -2,6 +2,7 @@ import './App.scss';
 import {useEffect, useState} from "react";
 import {LeftContentComponent} from "./components/views/LeftContentComponent";
 import {RightContentComponent} from "./components/views/RightContentComponent";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const initialNodes = [];
 const initialEdges = [];
@@ -167,8 +168,14 @@ function App() {
 
     return (
         <div className="App container-fluid">
-            <button id="btn-sidebar-collapse" type="button" className="btn btn-primary position-fixed" onClick={toggleLeftColumn}>
-                {isLeftColumnVisible ? "Sidebar einklappen" : "Sidebar ausklappen"}
+            <button
+                id="btn-sidebar-collapse"
+                type="button"
+                className={`btn btn-primary position-fixed ${isLeftColumnVisible ? 'expanded' : 'collapsed'}`}
+                onClick={toggleLeftColumn}
+            >
+                {isLeftColumnVisible && <FontAwesomeIcon className="p-0 m-0" icon="fa-solid fa-arrow-left" />}
+                {!isLeftColumnVisible && <FontAwesomeIcon className="p-0 m-0" icon="fa-solid fa-arrow-right" />}
             </button>
             <div className="collapse" id="collapseExample">
                 <div className="card card-body">
@@ -195,7 +202,7 @@ function App() {
                     </div>
                 </div>
                 <div style={{left: isLeftColumnVisible ? '400px' : '0', width: isLeftColumnVisible ? 'calc(100vw - 400px)' : '100vw'}} id="right-column" className="no-padding full-height">
-                    <div className="p-1">
+                    <div >
                         <RightContentComponent />
                     </div>
                 </div>
