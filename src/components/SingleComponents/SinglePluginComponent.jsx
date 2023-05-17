@@ -1,45 +1,11 @@
 import { Fragment, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faArrowDown, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export const SinglePluginComponent = (props) => {
-    const [pluginName, setPluginName] = useState(props.plugin.name);
-    const [pluginKey, setPluginKey] = useState(props.plugin.key);
-    const [pluginDescription, setPluginDescription] = useState(props.plugin.description);
-    const [pluginControllerActionsCachable, setPluginControllerActionsCachable] = useState(props.plugin.controllerActionsCachable);
-    const [pluginControllerActionsNonCachable, setPluginControllerActionsNonCachable] = useState(props.plugin.controllerActionsNonCachable);
-
-    const updateFunctions = {
-        name: setPluginName,
-        key: setPluginKey,
-        description: setPluginDescription,
-        controllerActionsCachable: setPluginControllerActionsCachable,
-        controllerActionsNonCachable: setPluginControllerActionsNonCachable,
-    };
 
     const updatePluginHandler = (field, value) => {
-        if (updateFunctions[field]) {
-            updateFunctions[field](value);
-
-            const updatedValues = {
-                name: pluginName,
-                key: pluginKey,
-                description: pluginDescription,
-                controllerActionsCachable: pluginControllerActionsCachable,
-                controllerActionsNonCachable: pluginControllerActionsNonCachable,
-                [field]: value,
-            };
-
-            props.updatePluginHandler(
-                props.index,
-                updatedValues.name,
-                updatedValues.key,
-                updatedValues.description,
-                updatedValues.controllerActionsCachable,
-                updatedValues.controllerActionsNonCachable,
-            );
-        } else {
-            console.log("No field found");
-        }
+       props.updatePluginHandler(props.plugin.id, field, value);
     };
 
     return (
@@ -53,7 +19,7 @@ export const SinglePluginComponent = (props) => {
                         placeholder="Plugin Name"
                         aria-label="Plugin Name"
                         aria-describedby="basic-addon1"
-                        value={pluginName}
+                        value={props.plugin.name}
                         onChange={(e) => {
                             updatePluginHandler('name', e.target.value);
                         }}
@@ -67,7 +33,7 @@ export const SinglePluginComponent = (props) => {
                         placeholder="Plugin key"
                         aria-label="Plugin key"
                         aria-describedby="basic-addon1"
-                        value={pluginKey}
+                        value={props.plugin.key}
                         onChange={(e) => {
                             updatePluginHandler('key', e.target.value);
                         }}
@@ -80,7 +46,7 @@ export const SinglePluginComponent = (props) => {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         placeholder="Please insert a description"
-                        value={pluginDescription}
+                        value={props.description}
                         onChange={(e) => {
                             updatePluginHandler('description', e.target.value);
                         }}
@@ -93,7 +59,7 @@ export const SinglePluginComponent = (props) => {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         placeholder="Blog => list, show"
-                        value={pluginControllerActionsCachable}
+                        value={props.plugin.controllerActionsCachable}
                         onChange={(e) => {
                             updatePluginHandler('controllerActionsCachable', e.target.value);
                         }}
@@ -106,11 +72,34 @@ export const SinglePluginComponent = (props) => {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         placeholder="Blog => edit, update, delete"
-                        value={pluginControllerActionsNonCachable}
+                        value={props.plugin.controllerActionsNonCachable}
                         onChange={(e) => {
                             updatePluginHandler('controllerActionsNonCachable', e.target.value);
                         }}
                         rows="5" />
+                </div>
+                <div className="d-flex author-actions">
+                    <button
+                        className="btn btn-danger me-auto"
+                        onClick={() => {
+                            props.removePluginHandler(props.plugin.id);
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                    <button
+                        className="btn btn-info me-1"
+                        onClick={() => props.movePlugin(props.index, -1)}
+                    >
+                        <FontAwesomeIcon icon={faArrowUp} />
+                    </button>
+                    <button
+                        className="btn btn-info"
+                        onClick={() => props.movePlugin(props.index, 1)}
+                    >
+
+                        <FontAwesomeIcon icon={faArrowDown} />
+                    </button>
                 </div>
             </div>
         </Fragment>

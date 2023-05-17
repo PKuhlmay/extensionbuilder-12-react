@@ -77,7 +77,7 @@ function App() {
 
     const addNewPluginHandler = () => {
         setPlugins((prevPlugins) => {
-            return [...prevPlugins, defaultPlugin];
+            return [...prevPlugins, {...defaultPlugin, id: Math.random().toString()}];
         });
     }
 
@@ -129,10 +129,65 @@ function App() {
         });
     };
 
+
+    const updatePluginHandler = (pluginId, field, value) => {
+        setPlugins((prevPlugins) => {
+            return prevPlugins.map((plugin) => {
+                if (plugin.id === pluginId) {
+                    return {...plugin, [field]: value};
+                } else {
+                    return plugin;
+                }
+            });
+        });
+    }
+
     const removeAuthorHandler = (authorId) => {
         // TODO Testen !!!
         setAuthors((prevAuthors) => {
             return prevAuthors.filter((author) => author.id !== authorId);
+        });
+    }
+
+    const removePluginHandler = (pluginId) => {
+        // TODO Testen !!!
+        setPlugins((prevPlugins) => {
+            return prevPlugins.filter((plugin) => plugin.id !== pluginId);
+        });
+    }
+
+    const moveAuthor = (index, direction) => {
+        setAuthors(prevAuthors => {
+            const newAuthors = [...prevAuthors];
+            const targetIndex = index + direction;
+
+            // Überprüfen, ob der Zielindex innerhalb der gültigen Bereichsgrenzen liegt
+            if (targetIndex >= 0 && targetIndex < newAuthors.length) {
+                // Elemente tauschen
+                const temp = newAuthors[targetIndex];
+                newAuthors[targetIndex] = newAuthors[index];
+                newAuthors[index] = temp;
+            }
+
+            return newAuthors;
+        });
+    }
+
+
+    const movePlugin = (index, direction) => {
+        setPlugins(prevPlugins => {
+            const newPlugins = [...prevPlugins];
+            const targetIndex = index + direction;
+
+            // Überprüfen, ob der Zielindex innerhalb der gültigen Bereichsgrenzen liegt
+            if (targetIndex >= 0 && targetIndex < newPlugins.length) {
+                // Elemente tauschen
+                const temp = newPlugins[targetIndex];
+                newPlugins[targetIndex] = newPlugins[index];
+                newPlugins[index] = temp;
+            }
+
+            return newPlugins;
         });
     }
 
@@ -151,19 +206,6 @@ function App() {
         });
     }
 
-    const updatePluginHandler = (pluginIndex, pluginName, pluginKey, pluginDescription, pluginControllerActionsCachable, pluginControllerActionsNonCachable) => {
-        setPlugins((prevPlugins) => {
-            const updatedPlugin = [...prevPlugins];
-            updatedPlugin[pluginIndex] = {
-                name: pluginName,
-                key: pluginKey,
-                description: pluginDescription,
-                controllerActionsCachable: pluginControllerActionsCachable,
-                controllerActionsNonCachable: pluginControllerActionsNonCachable,
-            };
-            return updatedPlugin;
-        });
-    }
 
     useEffect(() => {
         const leftColumn = document.getElementById('left-column');
@@ -205,6 +247,9 @@ function App() {
                             updateModuleHandler={updateModuleHandler}
                             updatePluginHandler={updatePluginHandler}
                             removeAuthorHandler={removeAuthorHandler}
+                            removePluginHandler={removePluginHandler}
+                            moveAuthor={moveAuthor}
+                            movePlugin={movePlugin}
                         />
                     </div>
                 </div>

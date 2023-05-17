@@ -65,6 +65,8 @@ export const LeftContentComponent = (props) => {
                                 plugins={props.plugins}
                                 addPluginsHandler={props.addNewPluginHandler}
                                 updatePluginHandler={props.updatePluginHandler}
+                                removePluginHandler={props.removePluginHandler}
+                                movePlugin={props.movePlugin}
                             />
                         </div>
                     </div>

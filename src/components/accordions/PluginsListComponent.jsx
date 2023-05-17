@@ -14,7 +14,7 @@ export const PluginsListComponent = (props) => {
                                 <SinglePluginComponent
                                     plugin={plugin}
                                     index={index}
-                                    updatePluginHandler={props.updatePluginHandler}
+                                    {...props}
                                 />
                             </Fragment>
                         )
