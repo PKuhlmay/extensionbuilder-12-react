@@ -1,6 +1,5 @@
 import { useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { Popover } from 'bootstrap';
 
 export const CustomModelNode = (props) => {
     const [properties, setProperties] = useState([]);
@@ -59,13 +58,13 @@ export const CustomModelNode = (props) => {
         });
     }
 
-    useEffect(() => {
-        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-        // eslint-disable-next-line no-unused-vars
-        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl, {
-
-        }));
-    }, []);
+    // useEffect(() => {
+    //     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    //     // eslint-disable-next-line no-unused-vars
+    //     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl, {
+//
+    //     }));
+    // }, []);
 
     return (
         <div className="custom-model-node">
@@ -89,7 +88,7 @@ export const CustomModelNode = (props) => {
                          data-bs-parent="#accordionCustomModelNode">
                         <div className="accordion-body">
                             <div>
-                                <label htmlFor="objectType" title="There is another type 'Value object'. Please refer to the documentation for this object type.">Object type: Entity&nbsp;
+                               {/* <label htmlFor="objectType" title="There is another type 'Value object'. Please refer to the documentation for this object type.">Object type: Entity&nbsp;
                                     <span
                                         style={{cursor: "pointer"}}
                                         data-bs-container="body"
@@ -97,7 +96,7 @@ export const CustomModelNode = (props) => {
                                             data-bs-content={popoverText.objectType}>
                                         <FontAwesomeIcon icon="fa-solid fa-circle-info" />
                                     </span>
-                                </label>
+                                </label>*/}
                                 {/*<select name="objectType" id="objectType" className="nodrag"
                                     onChange={(e) => {
                                         props.data.objectType = e.target.value;
@@ -247,7 +246,6 @@ export const CustomModelNode = (props) => {
                                     return (
                                         <div className="custom-model-node__action-wrapper">
                                             <input type="text" name="actionName" placeholder="Action name" />
-                                            {action}
                                         </div>
                                     )
                                 })
@@ -277,7 +275,6 @@ export const CustomModelNode = (props) => {
                                 properties.map((property) => {
                                     return (
                                         <div className="custom-model-node__property-wrapper">
-                                            {property}
                                             <div className="d-flex justify-content-between">
                                                 <input type="text" name="propertyName" placeholder="Property name" />
                                             </div>

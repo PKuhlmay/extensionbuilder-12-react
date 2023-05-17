@@ -11,7 +11,7 @@ export default (props) => {
         <aside>
             <div className="description">You can drag these nodes to the pane on the left.</div>
             <div className="dndnode custom-model-node" onDragStart={(event) => onDragStart(event, 'customModel')} draggable>
-                Model
+                New Model Object
             </div>
             <div className="debug-output">
                 <h5>Debug output</h5>
