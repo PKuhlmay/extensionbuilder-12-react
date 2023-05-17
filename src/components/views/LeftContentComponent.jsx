@@ -43,6 +43,7 @@ export const LeftContentComponent = (props) => {
                                 addAuthorsHandler={props.addNewAuthorHandler}
                                 updateAuthorHandler={props.updateAuthorHandler}
                                 removeAuthorHandler={props.removeAuthorHandler}
+                                moveAuthor={props.moveAuthor}
                             />
                         </div>
                     </div>
