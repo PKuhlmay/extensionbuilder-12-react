@@ -65,7 +65,7 @@ function App() {
 
     const addNewAuthorHandler = () => {
         setAuthors((prevAuthors) => {
-            return [...prevAuthors, defaultAuthor];
+            return [...prevAuthors, {...defaultAuthor, id: Math.random().toString()}];
         });
     }
 
@@ -117,16 +117,22 @@ function App() {
        })
     }
 
-    const updateAuthorHandler = (authorIndex, authorName, authorRole, authorEmail, authorCompany) => {
+    const updateAuthorHandler = (authorId, field, value) => {
         setAuthors((prevAuthors) => {
-            const updatedAuthors = [...prevAuthors];
-            updatedAuthors[authorIndex] = {
-                name: authorName,
-                role: authorRole,
-                email: authorEmail,
-                company: authorCompany,
-            };
-            return updatedAuthors;
+            return prevAuthors.map((author) => {
+                if (author.id === authorId) {
+                    return {...author, [field]: value};
+                } else {
+                    return author;
+                }
+            });
+        });
+    };
+
+    const removeAuthorHandler = (authorId) => {
+        // TODO Testen !!!
+        setAuthors((prevAuthors) => {
+            return prevAuthors.filter((author) => author.id !== authorId);
         });
     }
 
@@ -198,6 +204,7 @@ function App() {
                             updateAuthorHandler={updateAuthorHandler}
                             updateModuleHandler={updateModuleHandler}
                             updatePluginHandler={updatePluginHandler}
+                            removeAuthorHandler={removeAuthorHandler}
                         />
                     </div>
                 </div>

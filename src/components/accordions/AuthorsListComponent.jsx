@@ -11,11 +11,11 @@ export const AuthorsListComponent = (props) => {
                 {
                     props.authors.map((author, index) => {
                         return (
-                            <Fragment key={index}>
+                            <Fragment key={author.id}>
                                 <SingleAuthorComponent
                                     author={author}
                                     index={index}
-                                    updateAuthorHandler={props.updateAuthorHandler}
+                                    {...props}
                                 />
                             </Fragment>
                         )

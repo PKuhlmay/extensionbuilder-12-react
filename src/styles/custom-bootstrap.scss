@@ -37,9 +37,13 @@ $super-light: #f4f4f4;
 $font-family-base: 'TYPO3', sans-serif;
 
 // Buttons
+.btn-info,
 .btn-success {
     color: white !important;
 }
+
+$border-radius: 0;
+
 
 // Accordions
 // $accordion-padding-y:                     1rem;

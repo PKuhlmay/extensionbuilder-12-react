@@ -1,41 +1,11 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faArrowDown, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export const SingleAuthorComponent = (props) => {
-    const [authorName, setAuthorName] = useState(props.author.name);
-    const [authorRole, setAuthorRole] = useState(props.author.role);
-    const [authorEmail, setAuthorEmail] = useState(props.author.email);
-    const [authorCompany, setAuthorCompany] = useState(props.author.company);
-
-    const updateFunctions = {
-        name: setAuthorName,
-        role: setAuthorRole,
-        email: setAuthorEmail,
-        company: setAuthorCompany,
-    };
 
     const updateAuthorHandler = (field, value) => {
-        if (updateFunctions[field]) {
-            updateFunctions[field](value);
-
-            const updatedValues = {
-                name: authorName,
-                role: authorRole,
-                email: authorEmail,
-                company: authorCompany,
-                [field]: value,
-            };
-
-            props.updateAuthorHandler(
-                props.index,
-                updatedValues.name,
-                updatedValues.role,
-                updatedValues.email,
-                updatedValues.company
-            );
-        } else {
-            console.log("No field found");
-        }
+        props.updateAuthorHandler(props.author.id, field, value);
     };
 
     const roles = [
@@ -60,7 +30,7 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Author Name"
                     aria-label="Author Name"
                     aria-describedby="basic-addon1"
-                    value={authorName}
+                    value={props.authorName}
                     onChange={(e) => {
                         updateAuthorHandler('name', e.target.value);
                     }}
@@ -95,7 +65,7 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Author E-Mail"
                     aria-label="Author E-Mail"
                     aria-describedby="basic-addon1"
-                    value={authorEmail}
+                    value={props.authorEmail}
                     onChange={(e) => {
                         updateAuthorHandler('email', e.target.value);
                     }}
@@ -110,11 +80,32 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Company"
                     aria-label="Company"
                     aria-describedby="basic-addon1"
-                    value={authorCompany}
+                    value={props.authorCompany}
                     onChange={(e) => {
                         updateAuthorHandler('company', e.target.value);
                     }}
                 />
+            </div>
+            <div className="d-flex author-actions">
+                <button
+                    className="btn btn-danger me-auto"
+                    onClick={() => {
+                        props.removeAuthorHandler(props.author.id);
+                    }}
+                >
+                   <FontAwesomeIcon icon={faTrash} />
+                </button>
+                <button
+                    className="btn btn-info me-1"
+                >
+                    <FontAwesomeIcon icon={faArrowUp} />
+                </button>
+                <button
+                    className="btn btn-info"
+                >
+
+                    <FontAwesomeIcon icon={faArrowDown} />
+                </button>
             </div>
         </div>
     );
