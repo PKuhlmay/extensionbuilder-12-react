@@ -1,9 +1,5 @@
 @import './styles/index';
 
-.App {
-    text-align: center;
-}
-
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -30,11 +26,43 @@
     color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+#left-column {
+    height: 100vh;
+    z-index: 1;
+    width: 400px;
+    overflow-y: auto;
+    transition: opacity 0.5s ease;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
+#left-column::-webkit-scrollbar {
+    display: none;
+}
+
+#right-column {
+    // background-color: green;
+    height: 100vh;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    overflow-y: hidden;
+    transition: left 0.5s ease, width 0.5s ease;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+#btn-sidebar-collapse {
+    z-index: 100;
+    top: 30px;
+}
+
+#btn-sidebar-collapse {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+

@@ -42,11 +42,10 @@ export const ReactFlowComponent = (props) => {
     );
 
     useEffect(() => {
-        console.log("use effect");
+        console.log("use effect for nodes in ReactFlowComponent");
     }, [nodes]);
 
     const onDragOver = useCallback((event) => {
-        console.log("onDragOver");
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
     }, []);
@@ -64,7 +63,6 @@ export const ReactFlowComponent = (props) => {
 
     const onDrop = useCallback(
         (event) => {
-            console.log("onDrop");
             event.preventDefault();
 
             const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -139,15 +137,15 @@ export const ReactFlowComponent = (props) => {
                         onDrop={onDrop}
                         onDragOver={onDragOver}
                     >
-                    <MiniMap
-                        nodeColor={nodeColor}
-                        nodeStrokeWidth={3}
-                        zoomable
-                        pannable
-                    />
-                    <Controls showInteractive={false} />
-                    <Background variant="cross" />
-                </ReactFlow>
+                        <MiniMap
+                            nodeColor={nodeColor}
+                            nodeStrokeWidth={3}
+                            zoomable
+                            pannable
+                        />
+                        <Controls showInteractive={false} />
+                        <Background variant="cross" />
+                    </ReactFlow>
                 </div>
                 <Sidebar
                     nodes={nodes}

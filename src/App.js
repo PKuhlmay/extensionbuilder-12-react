@@ -13,6 +13,14 @@ const initialNodes = [];
 const initialEdges = [];
 
 function App() {
+    // Zustand für das Ein- und Ausklappen der linken Spalte
+    const [isLeftColumnVisible, setLeftColumnVisible] = useState(true);
+
+    // Funktion zum Umschalten der Sichtbarkeit der linken Spalte
+    const toggleLeftColumn = () => {
+        setLeftColumnVisible(!isLeftColumnVisible);
+    }
+
     const [extensionProperties, setExtensionProperties] = useState(
         {
             extensionName: '',
@@ -125,7 +133,6 @@ function App() {
             };
             return updatedAuthors;
         });
-        console.log("Autor aktualisiert", authorIndex, authorName, authorRole, authorEmail, authorCompany);
     }
 
     const updateModuleHandler = (moduleIndex, moduleName, moduleKey, moduleDescription, moduleTabLabel, moduleMainModule, moduleControllerActionsCachable) => {
@@ -141,7 +148,6 @@ function App() {
             };
             return updatedModule;
         });
-        console.log("Modul aktualisiert", moduleIndex, moduleName, moduleKey, moduleDescription, moduleTabLabel, moduleMainModule, moduleControllerActionsCachable);
     }
 
     const updatePluginHandler = (pluginIndex, pluginName, pluginKey, pluginDescription, pluginControllerActionsCachable, pluginControllerActionsNonCachable) => {
@@ -156,11 +162,20 @@ function App() {
             };
             return updatedPlugin;
         });
-        console.log("Plugin aktualisiert", pluginIndex, pluginName, pluginKey, pluginDescription, pluginControllerActionsCachable, pluginControllerActionsNonCachable);
     }
+
+    useEffect(() => {
+        const leftColumn = document.getElementById('left-column');
+        if (leftColumn) {
+            leftColumn.style.opacity = isLeftColumnVisible ? '1' : '0';
+        }
+    }, [isLeftColumnVisible]);
 
     return (
         <div className="App container-fluid">
+            <button id="btn-sidebar-collapse" type="button" className="btn btn-primary position-fixed" onClick={toggleLeftColumn}>
+                {isLeftColumnVisible ? "Sidebar einklappen" : "Sidebar ausklappen"}
+            </button>
             <div className="collapse" id="collapseExample">
                 <div className="card card-body">
                     Some placeholder content for the collapse component. This panel is hidden by default but revealed
@@ -168,132 +183,27 @@ function App() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-4 text-start" id="left-column">
-                    <div className="accordion" id="accordionExtensionProperties">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionExtensionProperties">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionExtensionProperties" aria-expanded="true" aria-controls="collapseOne">
-                                    Extension Properties
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionExtensionProperties" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionExtensionProperties"
-                                 data-bs-parent="#accordionExtensionProperties">
-                                <div className="accordion-body">
-                                    <ExtensionPropertiesComponent
-                                        extensionProperties={extensionProperties}
-                                        updateExtensionPropertiesHandler={updateExtensionPropertiesHandler}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion" id="accordionAuthors">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionAuthors">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionAuthors" aria-expanded="true" aria-controls="collapseAccordionAuthors">
-                                    Extension authors
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionAuthors" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionAuthors"
-                                 data-bs-parent="#accordionAuthors">
-                                <div className="accordion-body">
-                                    <AuthorsListComponent
-                                        authors={authors}
-                                        addAuthorsHandler={addNewAuthorHandler}
-                                        updateAuthorHandler={updateAuthorHandler}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion" id="accordionPlugins">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionPlugins">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionPlugins" aria-expanded="true" aria-controls="collapseAccordionPlugins">
-                                    Frontend plugins
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionPlugins" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionPlugins"
-                                 data-bs-parent="#accordionPlugins">
-                                <div className="accordion-body">
-                                    <PluginsListComponent
-                                        plugins={plugins}
-                                        addPluginsHandler={addNewPluginHandler}
-                                        updatePluginHandler={updatePluginHandler}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="accordion" id="accordionModules">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionModules">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionModules" aria-expanded="true" aria-controls="collapseAccordionModules">
-                                    Backend modules
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionModules" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionModules"
-                                 data-bs-parent="#accordionModules">
-                                <div className="accordion-body">
-                                    <ModulesListComponent
-                                        modules={modules}
-                                        addModulesHandler={addNewModuleHandler}
-                                        updateModuleHandler={updateModuleHandler}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="accordion" id="accordionDebug">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingAccordionDebug">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseAccordionDebug" aria-expanded="true" aria-controls="collapseAccordionDebug">
-                                    Debug Output
-                                </button>
-                            </h2>
-                            <div id="collapseAccordionDebug" className="accordion-collapse collapse"
-                                 aria-labelledby="headingAccordionDebug"
-                                 data-bs-parent="#accordionDebug">
-                                <div className="accordion-body">
-                                    <h4>Extension Properties</h4>
-                                    <pre>
-                                        {JSON.stringify(extensionProperties, null, 2)}
-                                    </pre>
-                                    <hr />
-                                    <h4>Authors</h4>
-                                    <pre>
-                                        {JSON.stringify(authors, null, 2)}
-                                    </pre>
-                                    <hr />
-                                    <h4>Plugins</h4>
-                                    <pre>
-                                        {JSON.stringify(plugins, null, 2)}
-                                    </pre>
-                                    <hr />
-                                    <h4>Modules</h4>
-                                    <pre>
-                                        {JSON.stringify(modules, null, 2)}
-                                    </pre>
-                                </div>
-                            </div>
-                        </div>
+                <div id="left-column" className="no-padding full-height">
+                    <div className="p-1">
+                        <LeftContentComponent
+                            extensionProperties={extensionProperties}
+                            authors={authors}
+                            plugins={plugins}
+                            modules={modules}
+                            addNewAuthorHandler={addNewAuthorHandler}
+                            addNewModuleHandler={addNewModuleHandler}
+                            addNewPluginHandler={addNewPluginHandler}
+                            updateExtensionPropertiesHandler={updateExtensionPropertiesHandler}
+                            updateAuthorHandler={updateAuthorHandler}
+                            updateModuleHandler={updateModuleHandler}
+                            updatePluginHandler={updatePluginHandler}
+                        />
                     </div>
                 </div>
-                <div className="col-8 text-start" id="right-column">
-                   <ReactFlowComponent
-
-                   />
+                <div style={{left: isLeftColumnVisible ? '400px' : '0', width: isLeftColumnVisible ? 'calc(100vw - 400px)' : '100vw'}} id="right-column" className="no-padding full-height">
+                    <div className="p-1">
+                        <RightContentComponent />
+                    </div>
                 </div>
             </div>
         </div>
