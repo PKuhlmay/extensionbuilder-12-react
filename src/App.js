@@ -71,7 +71,7 @@ function App() {
 
     const addNewModuleHandler = () => {
         setModules((prevModules) => {
-            return [...prevModules, defaultModule];
+            return [...prevModules, {...defaultModule, id: Math.random().toString()}];
         });
     }
 
@@ -142,6 +142,18 @@ function App() {
         });
     }
 
+    const updateModuleHandler = (moduleId, field, value) => {
+        setModules((prevModules) => {
+            return prevModules.map((module) => {
+                if (module.id === moduleId) {
+                    return {...module, [field]: value};
+                } else {
+                    return module;
+                }
+            });
+        });
+    }
+
     const removeAuthorHandler = (authorId) => {
         // TODO Testen !!!
         setAuthors((prevAuthors) => {
@@ -153,6 +165,13 @@ function App() {
         // TODO Testen !!!
         setPlugins((prevPlugins) => {
             return prevPlugins.filter((plugin) => plugin.id !== pluginId);
+        });
+    }
+
+    const removeModuleHandler = (moduleId) => {
+        // TODO Testen !!!
+        setModules((prevModules) => {
+            return prevModules.filter((module) => module.id !== moduleId);
         });
     }
 
@@ -191,18 +210,20 @@ function App() {
         });
     }
 
-    const updateModuleHandler = (moduleIndex, moduleName, moduleKey, moduleDescription, moduleTabLabel, moduleMainModule, moduleControllerActionsCachable) => {
-        setModules((prevModules) => {
-            const updatedModule = [...prevModules];
-            updatedModule[moduleIndex] = {
-                name: moduleName,
-                key: moduleKey,
-                description: moduleDescription,
-                tabLabel: moduleTabLabel,
-                mainModule: moduleMainModule,
-                controllerActionsCachable: moduleControllerActionsCachable,
-            };
-            return updatedModule;
+    const moveModule = (index, direction) => {
+        setModules(prevModules => {
+            const newModules = [...prevModules];
+            const targetIndex = index + direction;
+
+            // Überprüfen, ob der Zielindex innerhalb der gültigen Bereichsgrenzen liegt
+            if (targetIndex >= 0 && targetIndex < newModules.length) {
+                // Elemente tauschen
+                const temp = newModules[targetIndex];
+                newModules[targetIndex] = newModules[index];
+                newModules[index] = temp;
+            }
+
+            return newModules;
         });
     }
 
@@ -248,8 +269,10 @@ function App() {
                             updatePluginHandler={updatePluginHandler}
                             removeAuthorHandler={removeAuthorHandler}
                             removePluginHandler={removePluginHandler}
+                            removeModuleHandler={removeModuleHandler}
                             moveAuthor={moveAuthor}
                             movePlugin={movePlugin}
+                            moveModule={moveModule}
                         />
                     </div>
                 </div>

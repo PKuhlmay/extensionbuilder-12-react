@@ -14,7 +14,7 @@ export const ModulesListComponent = (props) => {
                                 <SingleModuleComponent
                                     module={module}
                                     index={index}
-                                    updateModuleHandler={props.updateModuleHandler}
+                                    {...props}
                                 />
                             </Fragment>
                         )

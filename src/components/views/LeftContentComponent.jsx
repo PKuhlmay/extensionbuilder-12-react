@@ -89,6 +89,8 @@ export const LeftContentComponent = (props) => {
                                 modules={props.modules}
                                 addModulesHandler={props.addNewModuleHandler}
                                 updateModuleHandler={props.updateModuleHandler}
+                                removeModuleHandler={props.removeModuleHandler}
+                                moveModule={props.moveModule}
                             />
                         </div>
                     </div>

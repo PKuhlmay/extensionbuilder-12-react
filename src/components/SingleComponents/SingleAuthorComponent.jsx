@@ -30,7 +30,7 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Author Name"
                     aria-label="Author Name"
                     aria-describedby="basic-addon1"
-                    value={props.authorName}
+                    value={props.author.name}
                     onChange={(e) => {
                         updateAuthorHandler('name', e.target.value);
                     }}
@@ -65,7 +65,7 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Author E-Mail"
                     aria-label="Author E-Mail"
                     aria-describedby="basic-addon1"
-                    value={props.authorEmail}
+                    value={props.author.email}
                     onChange={(e) => {
                         updateAuthorHandler('email', e.target.value);
                     }}
@@ -80,7 +80,7 @@ export const SingleAuthorComponent = (props) => {
                     placeholder="Company"
                     aria-label="Company"
                     aria-describedby="basic-addon1"
-                    value={props.authorCompany}
+                    value={props.author.company}
                     onChange={(e) => {
                         updateAuthorHandler('company', e.target.value);
                     }}
