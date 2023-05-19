@@ -98,12 +98,14 @@ export const SingleAuthorComponent = (props) => {
                 <button
                     className="btn btn-info me-1"
                     onClick={() => props.moveAuthor(props.index, -1)}
+                    disabled={props.index === 0}
                 >
                     <FontAwesomeIcon icon={faArrowUp} />
                 </button>
                 <button
                     className="btn btn-info"
                     onClick={() => props.moveAuthor(props.index, 1)}
+                    disabled={props.index === props.authors.length - 1}
                 >
 
                     <FontAwesomeIcon icon={faArrowDown} />

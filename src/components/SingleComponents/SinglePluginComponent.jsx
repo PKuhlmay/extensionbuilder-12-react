@@ -90,12 +90,14 @@ export const SinglePluginComponent = (props) => {
                     <button
                         className="btn btn-info me-1"
                         onClick={() => props.movePlugin(props.index, -1)}
+                        disabled={props.index === 0}
                     >
                         <FontAwesomeIcon icon={faArrowUp} />
                     </button>
                     <button
                         className="btn btn-info"
                         onClick={() => props.movePlugin(props.index, 1)}
+                        disabled={props.index === props.plugins.length - 1}
                     >
 
                         <FontAwesomeIcon icon={faArrowDown} />
