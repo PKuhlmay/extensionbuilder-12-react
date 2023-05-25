@@ -21,8 +21,8 @@ export const SingleModuleComponent = (props) => {
     return (
         <Fragment>
             <div className="mb-5">
-                <div className="mb-3">
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>
+                <div className="mb-2 input-group">
+                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -34,9 +34,10 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('name', e.target.value);
                         }}
                     />
+                    <span className="input-group-text" id="basic-addon1">Name</span>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>
+                <div className="mb-2 input-group">
+                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -48,9 +49,10 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('key', e.target.value);
                         }}
                     />
+                    <span className="input-group-text" id="basic-addon1">Key</span>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>
+                <div className="mb-2 input-group">
+                    {/*<label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>*/}
                     <textarea
                         type="text"
                         className="form-control"
@@ -61,9 +63,11 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('description', e.target.value);
                         }}
                         rows="5" />
+                    <span className="input-group-text" id="basic-addon1">Description</span>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>
+                <div className="mb-2 input-group">
+
+                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -75,9 +79,11 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('tabLabel', e.target.value);
                         }}
                     />
+                    <span className="input-group-text" id="basic-addon1">Label</span>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>
+                <div className="mb-2 input-group">
+
+                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>*/}
                     <select
                         className="form-select"
                         aria-label="Role"
@@ -94,9 +100,11 @@ export const SingleModuleComponent = (props) => {
                             })
                         }
                     </select>
+                    <span className="input-group-text" id="basic-addon1">Main module</span>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>
+                <div className="mb-2 input-group">
+
+                    {/*<label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>*/}
                     <textarea
                         type="text"
                         className="form-control"
@@ -107,6 +115,7 @@ export const SingleModuleComponent = (props) => {
                             updateModuleHandler('controllerActionsCachable', e.target.value);
                         }}
                         rows="5" />
+                    <span className="input-group-text" id="basic-addon1">Depends</span>
                 </div>
                 <div className="d-flex module-actions">
                     <button

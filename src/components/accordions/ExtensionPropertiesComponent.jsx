@@ -113,11 +113,11 @@ export const ExtensionPropertiesComponent = (props) => {
 
     return (
         <Fragment>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Extension Name</label>
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     placeholder="Extension Name"
                     aria-label="Extension Name"
                     aria-describedby="basic-addon1"
@@ -127,11 +127,11 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionVendorName"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Vendor Name</label>
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     placeholder="Vendor Name"
                     aria-label="Vendor Name"
                     aria-describedby="basic-addon1"
@@ -141,11 +141,11 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionKey"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Extension key</label>
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     placeholder="Extension key"
                     aria-label="Extension key"
                     aria-describedby="basic-addon1"
@@ -155,11 +155,11 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Extension Description</label>
                 <textarea
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     id="exampleFormControlTextarea1"
                     placeholder="Please enter the description for this extension"
                     value={extensionDescription}
@@ -168,7 +168,7 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                     rows="5" />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionCategory"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-tag" /></span>Category</label>
                 <select
                     className="form-select"
@@ -187,11 +187,11 @@ export const ExtensionPropertiesComponent = (props) => {
                     }
                 </select>
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionVersion"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-code-branch" /></span>Extension Version</label>
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     placeholder="Extension Version"
                     aria-label="Extension Version"
                     aria-describedby="basic-addon1"
@@ -201,7 +201,7 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionState"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>State</label>
                 <select
                     className="form-select"
@@ -253,7 +253,7 @@ export const ExtensionPropertiesComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="form-check form-switch mb-3">
+            <div className="form-check form-switch mb-2">
                 <label className="form-check-label" htmlFor="extensionGenerateEditorconfig">Generate editorconfig</label>
                 <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateEditorconfig"
                     onChange={(e) => {
@@ -262,11 +262,11 @@ export const ExtensionPropertiesComponent = (props) => {
                 />
             </div>
 
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionSourceLanguageXliffFiles"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Source language for xliff files</label>
                 <input
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     placeholder="Source language for xliff files"
                     aria-label="Source language for xliff files"
                     aria-describedby="basic-addon1"
@@ -277,7 +277,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 />
             </div>
 
-            <div className="mb-3">
+            <div className="mb-2">
                 <label htmlFor="extensionTargetTYPO3Versions"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Target TYPO3 versions</label>
                 <select
                     defaultChecked={extensionTargetTYPO3Versions}
@@ -296,7 +296,7 @@ export const ExtensionPropertiesComponent = (props) => {
                     }
                 </select>
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <label
                     htmlFor="exampleFormControlTextarea1"
                     className="form-label">
@@ -305,7 +305,7 @@ export const ExtensionPropertiesComponent = (props) => {
                 </label>
                 <textarea
                     type="text"
-                    className="form-control"
+                    className="form-control form-control-sm"
                     id="exampleFormControlTextarea1"
                     placeholder="typo3 => 11.5.0"
                     value={extensionDependsOn}

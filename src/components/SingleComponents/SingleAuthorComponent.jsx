@@ -22,8 +22,9 @@ export const SingleAuthorComponent = (props) => {
 
     return (
         <div className="mb-5">
-            <div className="mb-3">
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user" /></span>Author</label>
+            <div className="mb-3 input-group">
+                {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user" /></span>Author</label>*/}
+                <span className="input-group-text" id="basic-addon1">Author</span>
                 <input
                     type="text"
                     className="form-control"
@@ -36,8 +37,9 @@ export const SingleAuthorComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
-                <label htmlFor="role"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user-tag" /></span>Role</label>
+            <div className="mb-3 input-group">
+                {/*<label htmlFor="role"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-user-tag" /></span>Role</label>*/}
+                <span className="input-group-text" id="basic-addon1">Role</span>
                 <select
                     className="form-select"
                     aria-label="Role"
@@ -56,8 +58,9 @@ export const SingleAuthorComponent = (props) => {
                     }
                 </select>
             </div>
-            <div className="mb-3">
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>E-Mail</label>
+            <div className="mb-3 input-group">
+                {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-envelope" /></span>E-Mail</label>*/}
+                <span className="input-group-text" id="basic-addon1">E-Mail</span>
                 <input
                     type="text"
                     id="email"
@@ -71,8 +74,9 @@ export const SingleAuthorComponent = (props) => {
                     }}
                 />
             </div>
-            <div className="mb-3">
-                <label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-building" /></span>Company</label>
+            <div className="mb-3 input-group">
+                {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-building" /></span>Company</label>*/}
+                <span className="input-group-text" id="basic-addon1">Company</span>
                 <input
                     type="text"
                     id="company"
