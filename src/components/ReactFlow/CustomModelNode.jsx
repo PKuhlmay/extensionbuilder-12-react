@@ -107,7 +107,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="isAggregateRoot">Is aggregate root:</label>
-                                <input type="checkbox" id="isAggregateRoot" name="isAggregateRoot" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.isAggregateRoot}
+                                    id="isAggregateRoot"
+                                    name="isAggregateRoot"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.isAggregateRoot = e.target.checked;
                                     }}
@@ -115,7 +120,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="enableSorting">Enable sorting</label>
-                                <input type="checkbox" id="enableSorting" name="enableSorting" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.enableSorting}
+                                    id="enableSorting"
+                                    name="enableSorting"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.enableSorting = e.target.checked;
                                     }}
@@ -123,7 +133,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="addDeletedField">Add deleted field</label>
-                                <input type="checkbox" id="addDeletedField" name="addDeletedField" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.addDeletedField}
+                                    id="addDeletedField"
+                                    name="addDeletedField"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.addDeletedField = e.target.checked;
                                     }}
@@ -131,7 +146,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="addHiddenField">Add hidden field</label>
-                                <input type="checkbox" id="addHiddenField" name="addHiddenField" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.addHiddenField}
+                                    id="addHiddenField"
+                                    name="addHiddenField"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.addHiddenField = e.target.checked;
                                     }}
@@ -139,7 +159,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="addStarttimeEndtimeFields">Add starttime/endtime fields</label>
-                                <input type="checkbox" id="addStarttimeEndtimeFields" name="addStarttimeEndtimeFields" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.addStarttimeEndtimeFields}
+                                    id="addStarttimeEndtimeFields"
+                                    name="addStarttimeEndtimeFields"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.addStarttimeEndtimeFields = e.target.checked;
                                     }}
@@ -147,7 +172,12 @@ export const CustomModelNode = (props) => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="enableCategorization">Enable categorization</label>
-                                <input type="checkbox" id="enableCategorization" name="enableCategorization" className="nodrag"
+                                <input
+                                    type="checkbox"
+                                    checked={props.data.enableCategorization}
+                                    id="enableCategorization"
+                                    name="enableCategorization"
+                                    className="nodrag"
                                     onChange={(e) => {
                                         props.data.enableCategorization = e.target.checked;
                                     }}
@@ -292,7 +322,11 @@ export const CustomModelNode = (props) => {
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <label htmlFor="isExcdeField">is exclude field?</label>
-                                                <input type="checkbox" id="isExcdeField" name="isExcdeField" className="nodrag" />
+                                                <input
+                                                    type="checkbox"
+                                                    id="isExcdeField"
+                                                    name="isExcdeField"
+                                                    className="nodrag" />
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <label htmlFor="isl10nModeExlude">is l10n_mode = exclude</label>
