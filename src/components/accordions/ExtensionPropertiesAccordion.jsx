@@ -1,12 +1,11 @@
 import {Fragment, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {SingleAuthorComponent} from "../SingleComponents/SingleAuthorComponent";
 
 
 export const ExtensionPropertiesAccordion = (props) => {
     const [extensionName, setExtensionName] = useState(props.extensionProperties.extensionName);
     const [extensionVendorName, setExtensionVendorName] = useState(props.extensionProperties.extensionVendorName);
-    const [exensionKey, setExensionKey] = useState(props.extensionProperties.extensionKey);
+    const [extensionKey, setExtensionKey] = useState(props.extensionProperties.extensionKey);
     const [extensionDescription, setExtensionDescription] = useState(props.extensionProperties.extensionDescription);
     const [extensionCategory, setExtensionCategory] = useState(props.extensionProperties.extensionCategory);
     const [extensionVersion, setExtensionVersion] = useState(props.extensionProperties.extensionVersion);
@@ -44,13 +43,14 @@ export const ExtensionPropertiesAccordion = (props) => {
     ];
 
     const targetTYPO3Versions = [
-        "12.4"
+        "12.4",
+        "13.0"
     ];
 
     const updateFunctions = {
         extensionName: setExtensionName,
         extensionVendorName: setExtensionVendorName,
-        extensionKey: setExensionKey,
+        extensionKey: setExtensionKey,
         extensionDescription: setExtensionDescription,
         extensionCategory: setExtensionCategory,
         extensionVersion: setExtensionVersion,
@@ -72,7 +72,7 @@ export const ExtensionPropertiesAccordion = (props) => {
             const updatedValues = {
                 extensionName: extensionName,
                 extensionVendorName: extensionVendorName,
-                extensionKey: exensionKey,
+                extensionKey: extensionKey,
                 extensionDescription: extensionDescription,
                 extensionCategory: extensionCategory,
                 extensionVersion: extensionVersion,
@@ -111,6 +111,53 @@ export const ExtensionPropertiesAccordion = (props) => {
             console.log("------");
         }
     }
+
+    // Change the depends on textarea depending on the target TYPO3 version
+    // const updateDependsOnHandler = (e) => {
+    const handleTargetTYPO3VersionChange = (e) => {
+        const selectedVersion = e.target.value;
+
+        // Split the current content of extensionDependsOn into lines
+        let lines = extensionDependsOn.split('\n');
+
+        // If the initial content is an empty string, initialize lines as an empty array
+        if (lines.length === 1 && lines[0] === '') {
+            lines = [];
+        }
+
+        // Variable to track if a line with TYPO3 was found
+        let typo3LineFound = false;
+
+        // Iterate through each line and update the line that contains TYPO3
+        const updatedLines = lines.map(line => {
+            if (line.trim().startsWith('typo3')) {
+                typo3LineFound = true;
+                // Here you can add logic to set the value based on the selected version
+                if (selectedVersion === '12.4') {
+                    return 'typo3 => 12.4.0-12.4.99';
+                } else if (selectedVersion === '13.0') {
+                    return 'typo3 => 13.0.0-13.0.99';
+                }
+            }
+            return line; // If the line does not contain TYPO3, return it unchanged
+        });
+
+        // If no line with TYPO3 was found, add a new one
+        if (!typo3LineFound) {
+            const newTypo3Line = selectedVersion === '12.4' ? 'typo3 => 12.4.0-12.4.99' : 'typo3 => 13.0.0-13.0.99';
+            updatedLines.push(newTypo3Line);
+        }
+
+        // Combine the updated lines back into a string
+        const updatedDependsOnValue = updatedLines.join('\n');
+
+        // Update the value of extensionDependsOn
+        updateExtensionPropertiesHandler('extensionDependsOn', updatedDependsOnValue);
+
+        // Also update the value of extensionTargetTYPO3Versions
+        updateExtensionPropertiesHandler('extensionTargetTYPO3Versions', selectedVersion);
+    };
+
 
     return (
         <Fragment>
@@ -162,7 +209,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Extension key"
                                 aria-label="Extension key"
                                 aria-describedby="basic-addon1"
-                                value={exensionKey}
+                                value={extensionKey}
                                 onChange={(e) => {
                                     updateExtensionPropertiesHandler('extensionKey', e.target.value);
                                 }}
@@ -295,9 +342,8 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <select
                                 defaultChecked={extensionTargetTYPO3Versions}
                                 className="form-select" aria-label="Default select example"
-                                onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionTargetTYPO3Versions', e.target.value);
-                                }}
+                                aria-label="Default select example"
+                                onChange={handleTargetTYPO3VersionChange}
                             >
                                 <option>Please choose the TYPO3 version </option>
                                 {
@@ -320,7 +366,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 type="text"
                                 className="form-control form-control-sm"
                                 id="exampleFormControlTextarea1"
-                                placeholder="typo3 => 11.5.0"
+                                placeholder="typo3 => 12.4.0"
                                 value={extensionDependsOn}
                                 onChange={(e) => {
                                     updateExtensionPropertiesHandler('extensionDependsOn', e.target.value);
