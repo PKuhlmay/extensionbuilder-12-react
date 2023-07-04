@@ -16,23 +16,31 @@ function App() {
         setLeftColumnVisible(!isLeftColumnVisible);
     }
 
-    const [extensionProperties, setExtensionProperties] = useState(
+    const [properties, setProperties] = useState(
         {
-            extensionName: '',
-            extensionVendorName: '',
-            extensionKey: '',
-            extensionDescription: '',
-            extensionCategory: '',
-            extensionVersion: '',
-            extensionState: '',
-            extensionSourceLanguageXliffFiles: 'en',
-            extensionTargetTYPO3Versions: '12.4',
-            extensionDependsOn: '',
-            extensionDisableVersioning: false,
-            extensionDisableLocalization: false,
-            extensionGenerateDocumentation: false,
-            extensionGenerateGitRepository: false,
-            extensionGenerateEditorconfig: false,
+            backendModules: [],
+            description: "",
+            emConf: {
+                "category": "",
+                "custom_category": "",
+                "dependsOn": "",
+                "disableLocalization": false,
+                "disableVersioning": false,
+                "generateDocumentationTemplate": false,
+                "generateEditorConfig": false,
+                "generateEmptyGitRepository": false,
+                "sourceLanguage": "",
+                "state": "",
+                "targetVersion": "",
+                "version": ""
+            },
+            extensionKey: "",
+            name: "",
+            originalExtensionKey: "",
+            originalVendorName: "",
+            persons: [],
+            plugins: [],
+            vendorName: ""
         }
     );
     const [authors, setAuthors] = useState([]);
@@ -82,41 +90,24 @@ function App() {
         });
     }
 
-    const updateExtensionPropertiesHandler = (
-        extensionName,
-        extensionVendorName,
-        extensionKey,
-        extensionDescription,
-        extensionCategory,
-        extensionVersion,
-        extensionState,
-        extensionSourceLanguageXliffFiles,
-        extensionTargetTYPO3Versions,
-        extensionDependsOn,
-        extensionDisableVersioning,
-        extensionDisableLocalization,
-        extensionGenerateDocumentation,
-        extensionGenerateGitRepository,
-        extensionGenerateEditorconfig
-    ) => {
-       setExtensionProperties({
-            extensionName: extensionName,
-            extensionVendorName: extensionVendorName,
-            extensionKey: extensionKey,
-            extensionDescription: extensionDescription,
-            extensionCategory: extensionCategory,
-            extensionVersion: extensionVersion,
-            extensionState: extensionState,
-            extensionSourceLanguageXliffFiles: extensionSourceLanguageXliffFiles,
-            extensionTargetTYPO3Versions: extensionTargetTYPO3Versions,
-            extensionDependsOn: extensionDependsOn,
-            extensionDisableVersioning: extensionDisableVersioning,
-            extensionDisableLocalization: extensionDisableLocalization,
-            extensionGenerateDocumentation: extensionGenerateDocumentation,
-            extensionGenerateGitRepository: extensionGenerateGitRepository,
-            extensionGenerateEditorconfig: extensionGenerateEditorconfig,
-       })
+    const updateExtensionPropertiesHandler = (key, value) => {
+        if (key.includes('.')) {
+            const [parentKey, childKey] = key.split('.');
+            setProperties(prevProperties => ({
+                ...prevProperties,
+                [parentKey]: {
+                    ...prevProperties[parentKey],
+                    [childKey]: value,
+                },
+            }));
+        } else {
+            setProperties(prevProperties => ({
+                ...prevProperties,
+                [key]: value,
+            }));
+        }
     }
+
 
     const updateAuthorHandler = (authorId, field, value) => {
         setAuthors((prevAuthors) => {
@@ -257,7 +248,7 @@ function App() {
                 <div id="left-column" className="no-padding full-height">
                     <div className="p-1">
                         <LeftContentComponent
-                            extensionProperties={extensionProperties}
+                            properties={properties}
                             authors={authors}
                             plugins={plugins}
                             modules={modules}

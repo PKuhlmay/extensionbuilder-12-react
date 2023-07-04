@@ -3,21 +3,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 export const ExtensionPropertiesAccordion = (props) => {
-    const [extensionName, setExtensionName] = useState(props.extensionProperties.extensionName);
-    const [extensionVendorName, setExtensionVendorName] = useState(props.extensionProperties.extensionVendorName);
-    const [extensionKey, setExtensionKey] = useState(props.extensionProperties.extensionKey);
-    const [extensionDescription, setExtensionDescription] = useState(props.extensionProperties.extensionDescription);
-    const [extensionCategory, setExtensionCategory] = useState(props.extensionProperties.extensionCategory);
-    const [extensionVersion, setExtensionVersion] = useState(props.extensionProperties.extensionVersion);
-    const [extensionState, setExtensionState] = useState(props.extensionProperties.extensionState);
-    const [extensionSourceLanguageXliffFiles, setExtensionSourceLanguageXliffFiles] = useState(props.extensionProperties.extensionSourceLanguageXliffFiles);
-    const [extensionTargetTYPO3Versions, setExtensionTargetTYPO3Versions] = useState(props.extensionProperties.extensionTargetTYPO3Versions);
-    const [extensionDependsOn, setExtensionDependsOn] = useState(props.extensionProperties.extensionDependsOn);
-    const [extensionDisableVersioning, setExtensionDisableVersioning] = useState(props.extensionProperties.extensionDisableVersioning);
-    const [extensionDisableLocalization, setExtensionDisableLocalization] = useState(props.extensionProperties.extensionDisableLocalization);
-    const [extensionGenerateDocumentation, setExtensionGenerateDocumentation] = useState(props.extensionProperties.extensionGenerateDocumentation);
-    const [extensionGenerateGitRepository, setExtensionGenerateGitRepository] = useState(props.extensionProperties.extensionGenerateGitRepository);
-    const [extensionGenerateEditorconfig, setExtensionGenerateEditorconfig] = useState(props.extensionProperties.extensionGenerateEditorconfig);
+    const [extensionProperties, setExtensionProperties] = useState(props.properties);
+
 
     // let extensionTargetTYPO3Version;
 
@@ -47,69 +34,23 @@ export const ExtensionPropertiesAccordion = (props) => {
         "13.0"
     ];
 
-    const updateFunctions = {
-        extensionName: setExtensionName,
-        extensionVendorName: setExtensionVendorName,
-        extensionKey: setExtensionKey,
-        extensionDescription: setExtensionDescription,
-        extensionCategory: setExtensionCategory,
-        extensionVersion: setExtensionVersion,
-        extensionState: setExtensionState,
-        extensionSourceLanguageXliffFiles: setExtensionSourceLanguageXliffFiles,
-        extensionTargetTYPO3Versions: setExtensionTargetTYPO3Versions,
-        extensionDependsOn: setExtensionDependsOn,
-        extensionDisableVersioning: setExtensionDisableVersioning,
-        extensionDisableLocalization: setExtensionDisableLocalization,
-        extensionGenerateDocumentation: setExtensionGenerateDocumentation,
-        extensionGenerateGitRepository: setExtensionGenerateGitRepository,
-        extensionGenerateEditorconfig: setExtensionGenerateEditorconfig,
-    };
-
     const updateExtensionPropertiesHandler = (field, value) => {
-        if (updateFunctions[field]) {
-            updateFunctions[field](value);
-
-            const updatedValues = {
-                extensionName: extensionName,
-                extensionVendorName: extensionVendorName,
-                extensionKey: extensionKey,
-                extensionDescription: extensionDescription,
-                extensionCategory: extensionCategory,
-                extensionVersion: extensionVersion,
-                extensionState: extensionState,
-                extensionSourceLanguageXliffFiles: extensionSourceLanguageXliffFiles,
-                extensionTargetTYPO3Versions: extensionTargetTYPO3Versions,
-                extensionDependsOn: extensionDependsOn,
-                extensionDisableVersioning: extensionDisableVersioning,
-                extensionDisableLocalization: extensionDisableLocalization,
-                extensionGenerateDocumentation: extensionGenerateDocumentation,
-                extensionGenerateGitRepository: extensionGenerateGitRepository,
-                extensionGenerateEditorconfig: extensionGenerateEditorconfig,
-                [field]: value,
-            };
-
-            props.updateExtensionPropertiesHandler(
-                updatedValues.extensionName,
-                updatedValues.extensionVendorName,
-                updatedValues.extensionKey,
-                updatedValues.extensionDescription,
-                updatedValues.extensionCategory,
-                updatedValues.extensionVersion,
-                updatedValues.extensionState,
-                updatedValues.extensionSourceLanguageXliffFiles,
-                updatedValues.extensionTargetTYPO3Versions,
-                updatedValues.extensionDependsOn,
-                updatedValues.extensionDisableVersioning,
-                updatedValues.extensionDisableLocalization,
-                updatedValues.extensionGenerateDocumentation,
-                updatedValues.extensionGenerateGitRepository,
-                updatedValues.extensionGenerateEditorconfig,
-            );
+        if (field.startsWith('emConf.')) {
+            const emConfField = field.split('.')[1];
+            setExtensionProperties(prevProps => ({
+                ...prevProps,
+                emConf: {
+                    ...prevProps.emConf,
+                    [emConfField]: value
+                }
+            }));
         } else {
-            console.log("No field found");
-            console.log(field);
-            console.log("------");
+            setExtensionProperties(prevProps => ({
+                ...prevProps,
+                [field]: value
+            }));
         }
+        props.updateExtensionPropertiesHandler(field, value);
     }
 
     // Change the depends on textarea depending on the target TYPO3 version
@@ -118,7 +59,7 @@ export const ExtensionPropertiesAccordion = (props) => {
         const selectedVersion = e.target.value;
 
         // Split the current content of extensionDependsOn into lines
-        let lines = extensionDependsOn.split('\n');
+        let lines = extensionProperties.emConf.dependsOn.split('\n');
 
         // If the initial content is an empty string, initialize lines as an empty array
         if (lines.length === 1 && lines[0] === '') {
@@ -152,10 +93,10 @@ export const ExtensionPropertiesAccordion = (props) => {
         const updatedDependsOnValue = updatedLines.join('\n');
 
         // Update the value of extensionDependsOn
-        updateExtensionPropertiesHandler('extensionDependsOn', updatedDependsOnValue);
+        updateExtensionPropertiesHandler('emConf.dependsOn', updatedDependsOnValue);
 
         // Also update the value of extensionTargetTYPO3Versions
-        updateExtensionPropertiesHandler('extensionTargetTYPO3Versions', selectedVersion);
+        updateExtensionPropertiesHandler('emConf.targetVersion', selectedVersion);
     };
 
 
@@ -181,9 +122,9 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Extension Name"
                                 aria-label="Extension Name"
                                 aria-describedby="basic-addon1"
-                                value={extensionName}
+                                value={extensionProperties.name}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionName', e.target.value);
+                                    updateExtensionPropertiesHandler('name', e.target.value);
                                 }}
                             />
                         </div>
@@ -195,9 +136,9 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Vendor Name"
                                 aria-label="Vendor Name"
                                 aria-describedby="basic-addon1"
-                                value={extensionVendorName}
+                                value={extensionProperties.emConf.vendorName}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionVendorName', e.target.value);
+                                    updateExtensionPropertiesHandler('vendorName', e.target.value);
                                 }}
                             />
                         </div>
@@ -209,7 +150,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Extension key"
                                 aria-label="Extension key"
                                 aria-describedby="basic-addon1"
-                                value={extensionKey}
+                                value={extensionProperties.extensionKey}
                                 onChange={(e) => {
                                     updateExtensionPropertiesHandler('extensionKey', e.target.value);
                                 }}
@@ -222,9 +163,9 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 className="form-control form-control-sm"
                                 id="exampleFormControlTextarea1"
                                 placeholder="Please enter the description for this extension"
-                                value={extensionDescription}
+                                value={extensionProperties.description}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionDescription', e.target.value);
+                                    updateExtensionPropertiesHandler('description', e.target.value);
                                 }}
                                 rows="5" />
                         </div>
@@ -234,7 +175,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 className="form-select"
                                 aria-label="Category"
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionCategory', e.target.value);
+                                    updateExtensionPropertiesHandler('emConf.category', e.target.value);
                                 }}
                             >
                                 <option>Please choose the category</option>
@@ -255,9 +196,9 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Extension Version"
                                 aria-label="Extension Version"
                                 aria-describedby="basic-addon1"
-                                value={extensionVersion}
+                                value={extensionProperties.emConf.version}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionVersion', e.target.value);
+                                    updateExtensionPropertiesHandler('emConf.version', e.target.value);
                                 }}
                             />
                         </div>
@@ -267,7 +208,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 className="form-select"
                                 aria-label="State"
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionState', e.target.value);
+                                    updateExtensionPropertiesHandler('emConf.state', e.target.value);
                                 }}
                             >
                                 <option>Please choose the state</option>
@@ -285,7 +226,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <label className="form-check-label" htmlFor="extensionDisableVersioning">Disable versioning</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="extensionDisableVersioning"
                                    onChange={(e) => {
-                                       updateExtensionPropertiesHandler('extensionDisableVersioning', e.target.checked);
+                                       updateExtensionPropertiesHandler('emConf.disableVersioning', e.target.checked);
                                    }}
                             />
                         </div>
@@ -293,7 +234,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <label className="form-check-label" htmlFor="extensionDisableLocalization">Disable localization</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="extensionDisableLocalization"
                                    onChange={(e) => {
-                                       updateExtensionPropertiesHandler('extensionDisableLocalization', e.target.checked);
+                                       updateExtensionPropertiesHandler('emConf.disableLocalization', e.target.checked);
                                    }}
                             />
                         </div>
@@ -301,7 +242,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <label className="form-check-label" htmlFor="extensionGenerateDocumentation">Generate documentation</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateDocumentation"
                                    onChange={(e) => {
-                                       updateExtensionPropertiesHandler('extensionGenerateDocumentation', e.target.checked);
+                                       updateExtensionPropertiesHandler('emConf.generateDocumentationTemplate', e.target.checked);
                                    }}
                             />
                         </div>
@@ -309,7 +250,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <label className="form-check-label" htmlFor="extensionGenerateGitRepository">Generate git repository</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateGitRepository"
                                    onChange={(e) => {
-                                       updateExtensionPropertiesHandler('extensionGenerateGitRepository', e.target.checked);
+                                       updateExtensionPropertiesHandler('emConf.generateEmptyGitRepository', e.target.checked);
                                    }}
                             />
                         </div>
@@ -317,7 +258,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                             <label className="form-check-label" htmlFor="extensionGenerateEditorconfig">Generate editorconfig</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="extensionGenerateEditorconfig"
                                    onChange={(e) => {
-                                       updateExtensionPropertiesHandler('extensionGenerateEditorconfig', e.target.checked);
+                                       updateExtensionPropertiesHandler('emConf.generateEditorConfig', e.target.checked);
                                    }}
                             />
                         </div>
@@ -330,9 +271,9 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 placeholder="Source language for xliff files"
                                 aria-label="Source language for xliff files"
                                 aria-describedby="basic-addon1"
-                                value={extensionSourceLanguageXliffFiles}
+                                value={extensionProperties.extensionSourceLanguageXliffFiles}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionSourceLanguageXliffFiles', e.target.value);
+                                    updateExtensionPropertiesHandler('emConf.sourceLanguage', e.target.value);
                                 }}
                             />
                         </div>
@@ -340,7 +281,7 @@ export const ExtensionPropertiesAccordion = (props) => {
                         <div className="mb-2">
                             <label htmlFor="extensionTargetTYPO3Versions"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-question" /></span>Target TYPO3 versions</label>
                             <select
-                                defaultChecked={extensionTargetTYPO3Versions}
+                                defaultChecked={extensionProperties.extensionTargetTYPO3Versions}
                                 className="form-select" aria-label="Default select example"
                                 aria-label="Default select example"
                                 onChange={handleTargetTYPO3VersionChange}
@@ -367,14 +308,17 @@ export const ExtensionPropertiesAccordion = (props) => {
                                 className="form-control form-control-sm"
                                 id="exampleFormControlTextarea1"
                                 placeholder="typo3 => 12.4.0"
-                                value={extensionDependsOn}
+                                value={extensionProperties.emConf.dependsOn}
                                 onChange={(e) => {
-                                    updateExtensionPropertiesHandler('extensionDependsOn', e.target.value);
+                                    updateExtensionPropertiesHandler('emConf.dependsOn', e.target.value);
                                 }}
                                 rows="5" />
                         </div>
                     </div>
                 </div>
+    {/*            <pre>
+                    {JSON.stringify(extensionProperties, null, 2)}
+                </pre>*/}
             </div>
         </Fragment>
     )
