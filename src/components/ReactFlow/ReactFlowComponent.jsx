@@ -32,10 +32,12 @@ export const ReactFlowComponent = (props) => {
         (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
         [setNodes]
     );
+
     const onEdgesChange = useCallback(
         (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
         [setEdges]
     );
+
     const onConnect = useCallback(
         (connection) => setEdges((eds) => addEdge(connection, eds)),
         [setEdges]
@@ -121,7 +123,7 @@ export const ReactFlowComponent = (props) => {
     );
 
     return (
-        <div style={{ width: '100%', height: '100vh' }} className="dndflow">
+        <div style={{ width: '100%', height: '70vh' }} className="dndflow">
             <ReactFlowProvider>
                 <div className="reactflow-wrapper" ref={reactFlowWrapper}>
                     <ReactFlow

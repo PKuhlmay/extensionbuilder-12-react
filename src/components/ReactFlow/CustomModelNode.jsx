@@ -31,11 +31,8 @@ export const CustomModelNode = (props) => {
         { name: "None", value : "none" },
     ];
 
-    const popoverText = {
-        'objectType': 'There is another object type called ValueObject, please refer to the documentation for more information.',
-    }
-
     const addEmptyProperty = () => {
+        console.log("addEmptyProperty");
         setProperties([...properties, {
             name: '',
             type: '',
@@ -48,6 +45,7 @@ export const CustomModelNode = (props) => {
     }
 
     const addEmptyAction = () => {
+        console.log("addEmptyAction");
         setCustomActions([...customActions, {
             name: ''
         }]);
@@ -58,13 +56,15 @@ export const CustomModelNode = (props) => {
         });
     }
 
-    // useEffect(() => {
-    //     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-    //     // eslint-disable-next-line no-unused-vars
-    //     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new Popover(popoverTriggerEl, {
-//
-    //     }));
-    // }, []);
+    const updateProperty = (property, value) => {
+        console.log("updateProperty");
+        console.log(property);
+        console.log(value);
+        console.log(props.data);
+        props.data.label = value;
+        console.log("------");
+        // props.updateProperty(property, value);
+    }
 
     return (
         <div className="custom-model-node">
@@ -72,7 +72,8 @@ export const CustomModelNode = (props) => {
             <div className="custom-model-node__header">
                 <input type="text" name="nodeTitle" placeholder={props.data.label}
                     onChange={(e) => {
-                      props.data.label = e.target.value;
+                        updateProperty("label", e.target.value);
+                        // props.data.label = e.target.value;
                     }}
                 />
             </div>
@@ -87,24 +88,6 @@ export const CustomModelNode = (props) => {
                     <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne"
                          data-bs-parent="#accordionCustomModelNode">
                         <div className="accordion-body">
-                            <div>
-                               {/* <label htmlFor="objectType" title="There is another type 'Value object'. Please refer to the documentation for this object type.">Object type: Entity&nbsp;
-                                    <span
-                                        style={{cursor: "pointer"}}
-                                        data-bs-container="body"
-                                            data-bs-toggle="popover" data-bs-placement="top"
-                                            data-bs-content={popoverText.objectType}>
-                                        <FontAwesomeIcon icon="fa-solid fa-circle-info" />
-                                    </span>
-                                </label>*/}
-                                {/*<select name="objectType" id="objectType" className="nodrag"
-                                    onChange={(e) => {
-                                        props.data.objectType = e.target.value;
-                                    }}
-                                >
-                                    {objectTypes.map((objectType, index) => <option key={index} value={objectType}>{objectType}</option>)}
-                                </select>*/}
-                            </div>
                             <div className="d-flex justify-content-between">
                                 <label htmlFor="isAggregateRoot">Is aggregate root:</label>
                                 <input
@@ -359,7 +342,11 @@ export const CustomModelNode = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+           </div>
+            {/*  <span>Props</span>
+            <pre>
+                {JSON.stringify(props, null, 2)}
+            </pre>*/}
         </div>
     );
 }

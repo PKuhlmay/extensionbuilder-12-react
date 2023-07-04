@@ -64,6 +64,7 @@ function App() {
     }
 
     const addNewAuthorHandler = () => {
+        console.log("Add new author");
         setAuthors((prevAuthors) => {
             return [...prevAuthors, {...defaultAuthor, id: Math.random().toString()}];
         });
@@ -276,11 +277,11 @@ function App() {
                         />
                     </div>
                 </div>
-                <div style={{left: isLeftColumnVisible ? '400px' : '0', width: isLeftColumnVisible ? 'calc(100vw - 400px)' : '100vw'}} id="right-column" className="no-padding full-height">
+               {/* <div style={{left: isLeftColumnVisible ? '400px' : '0', width: isLeftColumnVisible ? 'calc(100vw - 400px)' : '100vw'}} id="right-column" className="no-padding full-height">
                     <div >
                         <RightContentComponent />
                     </div>
-                </div>
+                </div>*/}
             </div>
         </div>
     );

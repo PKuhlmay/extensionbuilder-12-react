@@ -27,13 +27,13 @@
 }
 
 #left-column {
-    height: 100vh;
+    /*height: 100vh;*/
     z-index: 1;
     width: 400px;
     overflow-y: auto;
     transition: opacity 0.5s ease;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 #left-column::-webkit-scrollbar {
@@ -59,9 +59,9 @@
     top: 8px;
     position: fixed;
     transition: left 0.5s ease;
-    color: $dark;
-    background-color: $super-light;
-    border-color: $super-light;
+    color: #515151;
+    background-color: #f4f4f4;
+    border-color: #f4f4f4;
 }
 
 #btn-sidebar-collapse.collapsed {
@@ -71,4 +71,3 @@
 #btn-sidebar-collapse.expanded {
     left: 420px;
 }
-
