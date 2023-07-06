@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {LeftContentComponent} from "./components/views/LeftContentComponent";
 import {RightContentComponent} from "./components/views/RightContentComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {getDemoExtensionKey} from "./helper";
 
 const initialNodes = [];
 const initialEdges = [];
@@ -219,13 +220,31 @@ function App() {
         });
     }
 
-
     useEffect(() => {
         const leftColumn = document.getElementById('left-column');
         if (leftColumn) {
             leftColumn.style.opacity = isLeftColumnVisible ? '1' : '0';
         }
     }, [isLeftColumnVisible]);
+
+    const handleDemoInput = () => {
+        console.log("demo Properties");
+        updateExtensionPropertiesHandler('description', 'This is a demo extension');
+        updateExtensionPropertiesHandler('emConf.category', 'custom');
+        updateExtensionPropertiesHandler('emConf.dependsOn', 'TYPO3 12');
+        updateExtensionPropertiesHandler('emConf.disableLocalization', false);
+        updateExtensionPropertiesHandler('emConf.disableVersioning', true);
+        updateExtensionPropertiesHandler('emConf.generateDocumentationTemplate', true);
+        updateExtensionPropertiesHandler('emConf.generateEditorConfig', true);
+        updateExtensionPropertiesHandler('emConf.generateEmptyGitRepository', true);
+        updateExtensionPropertiesHandler('emConf.sourceLanguage', 'en');
+        updateExtensionPropertiesHandler('emConf.state', 'beta');
+        updateExtensionPropertiesHandler('emConf.targetVersion', '1.0.0');
+        updateExtensionPropertiesHandler('emConf.version', '1.0.0');
+        updateExtensionPropertiesHandler('extensionKey', getDemoExtensionKey());
+        updateExtensionPropertiesHandler('name', 'Demo Extension');
+        updateExtensionPropertiesHandler('vendorName', 'Treupo');
+    }
 
     return (
         <div className="App container-fluid">
@@ -265,6 +284,7 @@ function App() {
                             moveAuthor={moveAuthor}
                             movePlugin={movePlugin}
                             moveModule={moveModule}
+                            handleDemoInput={handleDemoInput}
                         />
                     </div>
                 </div>

@@ -9,7 +9,7 @@ export const AuthorsListAccordion = (props) => {
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h3 className="panel-title" id="heading-panel-authors">
-                        <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#panel-authors" aria-expanded="true" aria-controls="panel-authors">
+                        <a href="#" className="collapsed" data-bs-toggle="collapse" data-bs-target="#panel-authors" aria-expanded="true" aria-controls="panel-authors">
                             <span className="caret"></span>
                             <strong>Extension authors</strong>
                         </a>

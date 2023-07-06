@@ -10,7 +10,7 @@ export const PluginsListAccordion = (props) => {
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h3 className="panel-title" id="heading-panel-plugins">
-                        <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#panel-plugins" aria-expanded="true" aria-controls="panel-plugins">
+                        <a href="#" className="collapsed" data-bs-toggle="collapse" data-bs-target="#panel-plugins" aria-expanded="true" aria-controls="panel-plugins">
                             <span className="caret"></span>
                             <strong>Frontend plugins</strong>
                         </a>
