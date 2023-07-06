@@ -14,11 +14,15 @@ export const ActionButtonsComponent = (props) => {
     }
 
     const handleSave = () => {
+        console.log("-Props-")
+        console.log(props);
+        console.log("----------")
+
         let working = {
             "modules": [],
             "properties": {
-                "backendModules": [],
-                "description": props.properties.description || "DESCRIPTION IST LEER",
+                "backendModules": props.modules,
+                "description": props.properties.description || "",
                 "emConf": {
                     "category": props.properties.emConf.category || "backend",
                     "custom_category": "",
@@ -30,15 +34,15 @@ export const ActionButtonsComponent = (props) => {
                     "generateEmptyGitRepository": props.properties.emConf.generateEmptyGitRepository || true,
                     "sourceLanguage": props.properties.emConf.sourceLanguage || "en",
                     "state": props.properties.emConf.state || "alpha",
-                    "targetVersion": props.properties.emConf.targetVersion || "12.4.0",
+                    "targetVersion": `${props.properties.emConf.targetVersion}.0-${props.properties.emConf.targetVersion}.99` || "12.4.0",
                     "version": props.properties.emConf.version || "0.0.1"
                 },
                 "extensionKey": props.properties.extensionKey || "my_ext",
                 "name": props.properties.name || "My Ext",
                 "originalExtensionKey": "",
                 "originalVendorName": "",
-                "persons": [],
-                "plugins": [],
+                "persons": props.authors,
+                "plugins": props.plugins,
                 "vendorName": props.properties.vendorName || "MyVendor"
             },
             "wires": []
@@ -56,8 +60,6 @@ export const ActionButtonsComponent = (props) => {
         };
         console.log("----------")
         console.log("payload");
-        console.log(JSON.stringify(payload));
-        console.log(payload);
         console.log("----------")
 
         // TYPO3 will be available in the global scope
@@ -71,22 +73,12 @@ export const ActionButtonsComponent = (props) => {
             .then(function (response) {
                 // eslint-disable-next-line no-restricted-globals,no-undef
                 top.TYPO3.Modal.confirm('Successfull saved', response.data.success);
-
-                // eslint-disable-next-line no-restricted-globals
-                // top.TYPO3.Modal.confirm(
-                //     "Successfull saved",
-                //     response.data.success
-                // )
                 setSuccess(response);
-                console.log("Success");
-                console.log(response);
             })
             .catch(function (error) {
                 // eslint-disable-next-line no-restricted-globals
                 top.TYPO3.Modal.confirm(error.message, error.response.data);
                 setErrors(error);
-                console.log("Error");
-                console.log(error);
             });
     }
 
@@ -108,11 +100,11 @@ export const ActionButtonsComponent = (props) => {
                 id="eb-btn-save"
                 onClick={handleSave}
             >Save</button>
-            <button
+{/*            <button
                 type="button"
                 className="btn btn-danger"
                 id="eb-btn-close"
-            >Close</button>
+            >Close</button>*/}
         </div>
 	)
 }

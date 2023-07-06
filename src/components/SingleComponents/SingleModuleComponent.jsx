@@ -22,7 +22,6 @@ export const SingleModuleComponent = (props) => {
         <Fragment>
             <div className="mb-5">
                 <div className="mb-2 input-group">
-                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Name</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -37,7 +36,6 @@ export const SingleModuleComponent = (props) => {
                     <span className="input-group-text" id="basic-addon1">Name</span>
                 </div>
                 <div className="mb-2 input-group">
-                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-key" /></span>Module key</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -52,7 +50,6 @@ export const SingleModuleComponent = (props) => {
                     <span className="input-group-text" id="basic-addon1">Key</span>
                 </div>
                 <div className="mb-2 input-group">
-                    {/*<label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module Description</label>*/}
                     <textarea
                         type="text"
                         className="form-control"
@@ -66,8 +63,6 @@ export const SingleModuleComponent = (props) => {
                     <span className="input-group-text" id="basic-addon1">Description</span>
                 </div>
                 <div className="mb-2 input-group">
-
-                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Module tab label</label>*/}
                     <input
                         type="text"
                         className="form-control"
@@ -82,13 +77,11 @@ export const SingleModuleComponent = (props) => {
                     <span className="input-group-text" id="basic-addon1">Label</span>
                 </div>
                 <div className="mb-2 input-group">
-
-                    {/*<label htmlFor="inputGroupSelect01"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Main Module</label>*/}
                     <select
                         className="form-select"
-                        aria-label="Role"
+                        aria-label="Mail module"
                         onChange={(e) => {
-                            updateModuleHandler('role', e.target.value);
+                            updateModuleHandler('mainModule', e.target.value);
                         }}
                     >
                         <option>Please choose the main module</option>
@@ -103,8 +96,6 @@ export const SingleModuleComponent = (props) => {
                     <span className="input-group-text" id="basic-addon1">Main module</span>
                 </div>
                 <div className="mb-2 input-group">
-
-                    {/*<label htmlFor="exampleFormControlTextarea1" className="form-label"><span className="me-2"><FontAwesomeIcon icon="fa-solid fa-signature" /></span>Cachable controller actions</label>*/}
                     <textarea
                         type="text"
                         className="form-control"
@@ -112,10 +103,10 @@ export const SingleModuleComponent = (props) => {
                         placeholder="Blog => edit, update, delete"
                         value={props.module.controllerActionsCachable}
                         onChange={(e) => {
-                            updateModuleHandler('controllerActionsCachable', e.target.value);
+                            updateModuleHandler('actions.controllerActionsCachable', e.target.value);
                         }}
                         rows="5" />
-                    <span className="input-group-text" id="basic-addon1">Depends</span>
+                    <span className="input-group-text" id="basic-addon1">Cachable controller actions</span>
                 </div>
                 <div className="d-flex module-actions">
                     <button

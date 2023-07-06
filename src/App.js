@@ -27,13 +27,13 @@ function App() {
                 "dependsOn": "",
                 "disableLocalization": false,
                 "disableVersioning": false,
-                "generateDocumentationTemplate": false,
-                "generateEditorConfig": false,
-                "generateEmptyGitRepository": false,
-                "sourceLanguage": "",
-                "state": "",
-                "targetVersion": "",
-                "version": ""
+                "generateDocumentationTemplate": true,
+                "generateEditorConfig": true,
+                "generateEmptyGitRepository": true,
+                "sourceLanguage": "en",
+                "state": "alpha",
+                "targetVersion": "12.4",
+                "version": "1.0.0"
             },
             extensionKey: "",
             name: "",
@@ -49,31 +49,34 @@ function App() {
     const [modules, setModules] = useState([]);
 
     const defaultAuthor = {
+        company: '',
+        email: '',
         name: '',
         role: '',
-        email: '',
-        company: '',
     }
 
     const defaultModule = {
-        name: '',
-        key: '',
+        actions : {
+            controllerActionCombinations: ""
+        },
         description: '',
-        tabLabel: '',
+        key: '',
         mainModule: '',
-        controllerActionsCachable: ''
+        name: '',
+        tabLabel: '',
     }
 
     const defaultPlugin = {
-        name: '',
-        key: '',
+        actions: {
+            controllerActionCombinations: "",
+            noncacheableActions: ""
+        },
         description: '',
-        controllerActionsCachable: '',
-        controllerActionsNonCachable: '',
+        key: '',
+        name: '',
     }
 
     const addNewAuthorHandler = () => {
-        console.log("Add new author");
         setAuthors((prevAuthors) => {
             return [...prevAuthors, {...defaultAuthor, id: Math.random().toString()}];
         });
@@ -122,30 +125,39 @@ function App() {
         });
     };
 
-
-    const updatePluginHandler = (pluginId, field, value) => {
-        setPlugins((prevPlugins) => {
-            return prevPlugins.map((plugin) => {
-                if (plugin.id === pluginId) {
+const updatePluginHandler = (pluginId, field, value) => {
+    setPlugins((prevPlugins) => {
+        return prevPlugins.map((plugin) => {
+            if (plugin.id === pluginId) {
+                if (field.includes('.')) {
+                    const [parentKey, childKey] = field.split('.');
+                    return {...plugin, [parentKey]: {...plugin[parentKey], [childKey]: value}};
+                } else {
                     return {...plugin, [field]: value};
-                } else {
-                    return plugin;
                 }
-            });
+            } else {
+                return plugin;
+            }
         });
-    }
+    });
+}
 
-    const updateModuleHandler = (moduleId, field, value) => {
-        setModules((prevModules) => {
-            return prevModules.map((module) => {
-                if (module.id === moduleId) {
-                    return {...module, [field]: value};
+const updateModuleHandler = (moduleId, field, value) => {
+    setModules((prevModules) => {
+        return prevModules.map((module) => {
+            if (module.id === moduleId) {
+                if (field.includes('.')) {
+                    const [parentKey, childKey] = field.split('.');
+                    return {...module, [parentKey]: {...module[parentKey], [childKey]: value}};
                 } else {
-                    return module;
+                    return {...module, [field]: value};
                 }
-            });
+            } else {
+                return module;
+            }
         });
-    }
+    });
+}
 
     const removeAuthorHandler = (authorId) => {
         // TODO Testen !!!
@@ -228,7 +240,6 @@ function App() {
     }, [isLeftColumnVisible]);
 
     const handleDemoInput = () => {
-        console.log("demo Properties");
         updateExtensionPropertiesHandler('description', 'This is a demo extension');
         updateExtensionPropertiesHandler('emConf.category', 'custom');
         updateExtensionPropertiesHandler('emConf.dependsOn', 'TYPO3 12');

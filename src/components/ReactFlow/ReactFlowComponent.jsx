@@ -115,7 +115,6 @@ export const ReactFlowComponent = (props) => {
                 dragHandle: '.drag-handle',
                 draggable: true,
             };
-            console.log(newNode);
 
             setNodes((nds) => nds.concat(newNode));
         },

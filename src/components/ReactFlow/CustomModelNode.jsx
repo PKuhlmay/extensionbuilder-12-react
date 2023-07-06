@@ -32,7 +32,6 @@ export const CustomModelNode = (props) => {
     ];
 
     const addEmptyProperty = () => {
-        console.log("addEmptyProperty");
         setProperties([...properties, {
             name: '',
             type: '',
@@ -45,7 +44,6 @@ export const CustomModelNode = (props) => {
     }
 
     const addEmptyAction = () => {
-        console.log("addEmptyAction");
         setCustomActions([...customActions, {
             name: ''
         }]);
@@ -57,13 +55,7 @@ export const CustomModelNode = (props) => {
     }
 
     const updateProperty = (property, value) => {
-        console.log("updateProperty");
-        console.log(property);
-        console.log(value);
-        console.log(props.data);
         props.data.label = value;
-        console.log("------");
-        // props.updateProperty(property, value);
     }
 
     return (

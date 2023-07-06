@@ -61,7 +61,7 @@ export const SinglePluginComponent = (props) => {
                         placeholder="Blog => list, show"
                         value={props.plugin.controllerActionsCachable}
                         onChange={(e) => {
-                            updatePluginHandler('controllerActionsCachable', e.target.value);
+                            updatePluginHandler('actions.controllerActionCombinations', e.target.value);
                         }}
                         rows="5" />
                 </div>
@@ -74,7 +74,7 @@ export const SinglePluginComponent = (props) => {
                         placeholder="Blog => edit, update, delete"
                         value={props.plugin.controllerActionsNonCachable}
                         onChange={(e) => {
-                            updatePluginHandler('controllerActionsNonCachable', e.target.value);
+                            updatePluginHandler('actions.noncacheableActions', e.target.value);
                         }}
                         rows="5" />
                 </div>
