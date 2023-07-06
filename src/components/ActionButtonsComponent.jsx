@@ -96,12 +96,12 @@ export const ActionButtonsComponent = (props) => {
 
 	return (
 		<div className="mb-2">
-            <button
+{/*            <button
                 type="button"
                 className="btn btn-secondary me-2"
                 id="eb-btn-demo"
                 onClick={handleDemoInput}
-            >Demo Input</button>
+            >Demo Input</button>*/}
             <button
                 type="button"
                 className="btn btn-success me-2"
